@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNet.Identity
+@model Rentalis_v2.Models.CarRentViewModels
+@{
+    ViewBag.Title = "Rent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="top-margin gtco-container">
+    <h2>Rent</h2>
+    <h3>Car name : @Model.car.Name</h3>
+    <h3>Car id : @Model.car.Id</h3>
+    <h3>Data od : @Model.dateFrom</h3>
+    <h3>Data do : @Model.dateTo</h3>
+    <h3>Days : @Model.days</h3>
+    <h3>Total Price : @Model.TotalPrice</h3>
+    <h3>UserId : @User.Identity.GetUserId()</h3>
+    @Html.ActionLink("Wypożycz","ConfirmRent","Car",new {id= @Model.car.Id , DateFrom=@Model.dateFrom, DateTo = @Model.dateTo, TotalPrice = @Model.TotalPrice, userId = @User.Identity.GetUserId() },new {@class="btn btn-success"})
+</div>
+

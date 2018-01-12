@@ -1,0 +1,152 @@
+﻿@using Microsoft.AspNet.Identity
+@*<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title — moja aplikacja platformy ASP.NET</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("Rentalis", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li>@Html.ActionLink("Lista Samochodów", "Cars", "Home")</li>
+					<li>@Html.ActionLink("Admin Samochody", "Cars", "Admin")</li>
+					<li>@Html.ActionLink("Informacje", "About", "Home")</li>
+					<li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+				</ul>
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year — moja aplikacja platformy ASP.NET</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>*@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Rentalis &mdash;</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Rentalis - wypożyczalnia samochodów online"/>
+	<meta name="keywords" content="samochody, wypożyczalnia, online, wypożyczalnia aut"/>
+	<meta name="author" content="Lukasz Biedrzycki"/>
+
+	<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link href="~/Content/css/theme/animate.css" rel="stylesheet"/>
+	<!-- Icomoon Icon Fonts-->
+	<link href="~/Content/css/theme/icomoon.css" rel="stylesheet"/>
+	<!-- Themify Icons-->
+	<link href="~/Content/css/theme/themify-icons.css" rel="stylesheet"/>
+	<!-- Bootstrap -->
+	<link href="~/Content/css/theme/bootstrap.css" rel="stylesheet"/>
+
+	<!-- Magnific Popup -->
+	<link href="~/Content/css/theme/magnific-popup.css" rel="stylesheet"/>
+
+	<!-- Owl Carousel -->
+	<link href="~/Content/css/theme/owl.carousel.min.css" rel="stylesheet"/>
+	<link href="~/Content/css/theme/owl.theme.default.min.css" rel="stylesheet"/>
+
+	<!-- Theme style -->
+	<link href="~/Content/css/theme/style.css" rel="stylesheet"/>
+
+	<!-- Modernizr JS -->
+	<script src="~/Content/js/theme/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+		<script src="js/respond.min.js"></script>
+	<![endif]-->
+	@*@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+<div class="gtco-loader"></div>
+	
+<div id="page">
+	<nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-sm-2 col-xs-12">
+					<div id="gtco-logo"><a href="~/">Rentalis <em>.</em></a></div>
+				</div>
+				<div class="col-xs-10 text-right menu-1 main-nav">
+					<ul>
+						<li >@Html.ActionLink("Home", "Index", "Home")</li>
+						<li ><a href="#">Jak to działa</a></li>
+						<li>@Html.ActionLink("O Nas", "About", "Home")</li>
+						<li>@Html.ActionLink("Samochody", "Cars", "Home")</li>
+						<li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+						@if (Request.IsAuthenticated)
+						{
+							using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
+							{
+								@Html.AntiForgeryToken()
+								<li>@Html.ActionLink("Witaj, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})</li>
+								<li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
+							}
+						}
+						else
+						{
+							<li >@Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+							<li ><span>@Html.ActionLink("Zarejestruj się", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</span></li>
+						}
+						@*<li><a href="#" class="external" title="You will be navigated to the external pages">Login</a></li>
+						<li class="btn-cta"><a href="http://gettemplates.co" class="external" title="You will be navigated to the external pages"><span>Zarejestruj się</span></a></li>*@
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+	@RenderBody()	
+	
+
+</div>
+	
+<!-- jQuery -->
+<script src="~/Content/js/theme/jquery.min.js"></script>
+<!-- jQuery Easing -->
+<script src="~/Content/js/theme/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="~/Content/js/theme/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="~/Content/js/theme/jquery.waypoints.min.js"></script>
+<!-- Carousel -->
+<script src="~/Content/js/theme/owl.carousel.min.js"></script>
+<!-- countTo -->
+<script src="~/Content/js/theme/jquery.countTo.js"></script>
+<!-- Magnific Popup -->
+<script src="~/Content/js/theme/jquery.magnific-popup.min.js"></script>
+<script src="~/Content/js/theme/magnific-popup-options.js"></script>
+<!-- Main -->
+<script src="~/Content/js/theme/main.js"></script>
+@RenderSection("scripts", required: false)
+</body>
+</html>
