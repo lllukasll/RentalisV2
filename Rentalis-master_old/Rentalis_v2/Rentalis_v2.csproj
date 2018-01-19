@@ -274,6 +274,14 @@
     <Compile Include="Migrations\201801121506298_ChagesInBookingModels.Designer.cs">
       <DependentUpon>201801121506298_ChagesInBookingModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801161554475_AddedOrderStatus.cs" />
+    <Compile Include="Migrations\201801161554475_AddedOrderStatus.Designer.cs">
+      <DependentUpon>201801161554475_AddedOrderStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801161559324_PopulateOrderStatus.cs" />
+    <Compile Include="Migrations\201801161559324_PopulateOrderStatus.Designer.cs">
+      <DependentUpon>201801161559324_PopulateOrderStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookingModels.cs" />
@@ -282,6 +290,7 @@
     <Compile Include="Models\CarRentViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrderStatusModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1227,6 +1236,7 @@
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\font-awesome\scss\_screen-reader.scss" />
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Views\Admin\Bookings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1301,6 +1311,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801121506298_ChagesInBookingModels.resx">
       <DependentUpon>201801121506298_ChagesInBookingModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801161554475_AddedOrderStatus.resx">
+      <DependentUpon>201801161554475_AddedOrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801161559324_PopulateOrderStatus.resx">
+      <DependentUpon>201801161559324_PopulateOrderStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

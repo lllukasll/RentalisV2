@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Rentalis_v2.Models.BookingModels>
+@{
+    ViewBag.Title = "Bookings";
+    Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
+}
+
+<h2>Rezerwacje</h2>
+
+<table id="tableAnnounce" class="table table-advance table-hover">
+    <tbody>
+    <tr>
+        <th>CarId</th>
+        <th>UserId</th>
+        <th>DateFrom</th>
+        <th>DateTo</th>
+        <th>TotalPrice</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.carId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatusId.name)
+            </td>
+            <td>
+                @Html.ActionLink("Szczegóły", "EditCar", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </td>
+            
+        </tr>
+    }
+    </tbody>
+</table>
+

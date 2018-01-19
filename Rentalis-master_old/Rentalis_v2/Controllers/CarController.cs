@@ -117,7 +117,7 @@ namespace Rentalis_v2.Controllers
             string dT = DateTo.ToString("yyyyMMddhhmmss");
             string dF = DateFrom.ToString("yyyyMMddhhmmss");
 
-            string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{2}','{3}','{1}',{0},{4})", id,userId,dF,dT,TotalPrice);
+            string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},1)", id,userId,dF,dT,TotalPrice);
             //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
             MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
             try

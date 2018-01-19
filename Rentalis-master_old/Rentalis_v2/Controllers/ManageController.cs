@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MySql.Data.MySqlClient;
 using Rentalis_v2.Models;
+using System.Data.Entity;
 
 namespace Rentalis_v2.Controllers
 {
@@ -362,7 +363,7 @@ namespace Rentalis_v2.Controllers
                 throw;
             }
 
-            var bookings = _context.bookingModels.ToList();
+            var bookings = _context.bookingModels.Include(c => c.OrderStatusId).ToList();
             List<BookingModels> result = bookings.Where(c => bookingIds.Any(p2 => p2 == c.Id)).ToList();
             return View(result);
         }
