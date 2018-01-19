@@ -177,6 +177,13 @@ namespace Rentalis_v2.Controllers
             return RedirectToAction("Cars");
         }
 
+        public ActionResult Bookings()
+        {
+            var bookings = _context.bookingModels.Include(c => c.OrderStatusId).ToList();
+
+            return View(bookings);
+        }
+
         //[HttpPost, ActionName("DeleteCar")]
         //public ActionResult DeleteCar(int id)
         //{

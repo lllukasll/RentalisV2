@@ -18,5 +18,7 @@ namespace Rentalis_v2.Models
         public DateTime DateTimeFrom { get; set; }
 
         public DateTime DateTimeTo { get; set; }
+
+        public OrderStatusModel OrderStatusId { get; set; }
     }
 }
