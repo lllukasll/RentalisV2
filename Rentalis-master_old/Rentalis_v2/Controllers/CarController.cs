@@ -130,7 +130,7 @@ namespace Rentalis_v2.Controllers
                     return View("CorrectlyRented");
                 }
             }
-            catch (Exception e)
+            catch 
             {
                 return HttpNotFound();
 
