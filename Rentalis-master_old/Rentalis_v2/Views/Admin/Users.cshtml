@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Rentalis_v2.Models.ApplicationUser>
+﻿@model IEnumerable<Rentalis_v2.Models.UsersViewModel>
 @{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
@@ -9,14 +9,20 @@
 <table id="tableAnnounce" class="table table-advance table-hover table-condemed " >
     <tbody>
     <tr>
-        <th>UserName</th>
+        <th>Id</th>
+        <th>Login</th>
         <th>Email</th>
+        <th>Rola</th>
+        <th></th>
     </tr>
     @foreach (var user in Model)
     {
         <tr>
-            <td>@user.UserName</td>
+            <td>@user.UserId</td>
+            <td>@user.Username</td>
             <td>@user.Email</td>
+            <td>@user.Role</td>
+            <td>@Html.ActionLink("Szczegóły", "UserDetails", "Admin", new {userId = @user.UserId}, new {@class = "btn btn-primary"})</td>
         </tr>
     }
 

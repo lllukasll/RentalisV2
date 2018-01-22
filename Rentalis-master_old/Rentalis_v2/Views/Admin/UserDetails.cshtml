@@ -1,0 +1,19 @@
+﻿@model Rentalis_v2.Models.AdminUserDetailsViewModel
+@{
+    ViewBag.Title = "UserDetails";
+    Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
+}
+
+<h2>UserDetails</h2>
+
+<h3>Login : @Model.userName</h3>
+<h3>Email : @Model.email</h3>
+<h3>
+    @using (Html.BeginForm("UpdateUserRole", "Admin", FormMethod.Post))
+    {
+        @Html.HiddenFor(o => o.userId);
+
+        @Html.DropDownListFor(o => o.RoleId, new SelectList(@Model.RoleList, "Value", "Text"))
+        <input type="submit" value="Submit" />
+    }
+</h3>

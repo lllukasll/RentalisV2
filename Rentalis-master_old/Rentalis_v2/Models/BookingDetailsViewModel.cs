@@ -11,6 +11,5 @@ namespace Rentalis_v2.Models
     {
         public BookingModels bookingModel { get; set; }
         public List<SelectListItem> orderStatus { get; set; }
-        //public List<string> orderStatus { get; set; }
     }
 }

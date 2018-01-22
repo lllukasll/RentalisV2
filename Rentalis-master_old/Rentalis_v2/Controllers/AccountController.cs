@@ -162,7 +162,8 @@ namespace Rentalis_v2.Controllers
                     //await roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
                     //await roleManager.CreateAsync(new IdentityRole("Admin"));
                     //await roleManager.CreateAsync(new IdentityRole("User"));
-                    //await UserManager.AddToRoleAsync(user.Id, "SuperAdmin");
+                    await UserManager.AddToRoleAsync(user.Id, "User");
+
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
