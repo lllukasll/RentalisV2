@@ -40,6 +40,8 @@ namespace Rentalis_v2.Models
         public bool AirBags { get; set; }
 
         public float PricePerDay { get; set; }
+
         
+
     }
 }
