@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Rentalis_v2.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
+}
+
+<h2>Users</h2>
+
+<table id="tableAnnounce" class="table table-advance table-hover table-condemed " >
+    <tbody>
+    <tr>
+        <th>UserName</th>
+        <th>Email</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+

@@ -1239,6 +1239,7 @@
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Admin\Bookings.cshtml" />
     <Content Include="Views\Admin\BokkingDetails.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

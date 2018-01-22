@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using System.Web.UI.WebControls;
 using Rentalis_v2.Models;
 
@@ -208,17 +209,22 @@ namespace Rentalis_v2.Controllers
             return View(booking);
         }
 
-        public ActionResult UpdateStatus(/*int orderId, int statusId*/BookingDetailsViewModel booking)
+        public ActionResult UpdateStatus(BookingDetailsViewModel booking)
         {
-            //var order = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == orderId);
             var order = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == booking.bookingModel.Id);
 
-            //order.OrderStatusId = _context.orderStatusModels.Single(c => c.id == statusId);
             order.OrderStatusId = _context.orderStatusModels.Single(c => c.id == booking.bookingModel.OrderStatusId.id);
 
             _context.SaveChanges();
 
             return RedirectToAction("Bookings");
+        }
+
+        public ActionResult Users()
+        {
+            var users = _context.Users.ToList();
+
+            return View(users);
         }
         //[HttpPost, ActionName("DeleteCar")]
         //public ActionResult DeleteCar(int id)
