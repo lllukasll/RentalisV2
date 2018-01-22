@@ -34,13 +34,13 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="~/Admin/Index">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="~/Admin/Bookings">
                     <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
                     <span class="nav-link-text">Rezerwacje</span>
                 </a>
@@ -97,7 +97,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
+        @*<ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
@@ -107,7 +107,7 @@
         <hr>
         <p>The SB Admin navbar can be either fixed or static, and it supports the navbar-light and navbar-dark Bootstrap 4 classes.</p>
         <a class="btn btn-primary" href="#" id="toggleNavPosition">Toggle Fixed/Static Navbar</a>
-        <a class="btn btn-primary" href="#" id="toggleNavColor">Toggle Navbar Color</a>
+        <a class="btn btn-primary" href="#" id="toggleNavColor">Toggle Navbar Color</a>*@
         <!-- Blank div to give the page height to preview the fixed vs. static navbar-->
         @*<div style="height: 1000px;"></div>*@
         @RenderBody()

@@ -57,13 +57,13 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data">
-      <HintPath>..\..\dll\MySql.Data.dll</HintPath>
+      <HintPath>..\..\..\..\dll\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data.Entity.EF6">
-      <HintPath>..\..\dll\MySql.Data.Entity.EF6.dll</HintPath>
+      <HintPath>..\..\..\..\dll\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Web">
-      <HintPath>..\..\dll\MySql.Web.dll</HintPath>
+      <HintPath>..\..\..\..\dll\MySql.Web.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -284,6 +284,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BookingDetailsViewModel.cs" />
     <Compile Include="Models\BookingModels.cs" />
     <Compile Include="Models\CarDetailsVievModels.cs" />
     <Compile Include="Models\CarModels.cs" />
@@ -1237,6 +1238,7 @@
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Views\Admin\Bookings.cshtml" />
+    <Content Include="Views\Admin\BokkingDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

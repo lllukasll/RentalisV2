@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Rentalis_v2.Models;
 
 namespace Rentalis_v2.Controllers
@@ -184,6 +185,41 @@ namespace Rentalis_v2.Controllers
             return View(bookings);
         }
 
+        public ActionResult BokkingDetails(int id)
+        {
+            BookingDetailsViewModel booking = new BookingDetailsViewModel();
+
+            booking.bookingModel = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == id);
+            var statusList = _context.orderStatusModels.ToList();
+            List<SelectListItem> test = new List<SelectListItem>();
+            foreach (var status in statusList)
+            {
+                test.Add(new SelectListItem
+                {
+                    Text = status.name,
+                    Value = status.id.ToString()
+                });
+            }
+
+            booking.orderStatus = test;
+
+            //var booking = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == id);
+
+            return View(booking);
+        }
+
+        public ActionResult UpdateStatus(/*int orderId, int statusId*/BookingDetailsViewModel booking)
+        {
+            //var order = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == orderId);
+            var order = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == booking.bookingModel.Id);
+
+            //order.OrderStatusId = _context.orderStatusModels.Single(c => c.id == statusId);
+            order.OrderStatusId = _context.orderStatusModels.Single(c => c.id == booking.bookingModel.OrderStatusId.id);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Bookings");
+        }
         //[HttpPost, ActionName("DeleteCar")]
         //public ActionResult DeleteCar(int id)
         //{
