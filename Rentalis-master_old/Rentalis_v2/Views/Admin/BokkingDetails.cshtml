@@ -1,0 +1,26 @@
+﻿@model Rentalis_v2.Models.BookingDetailsViewModel
+@{
+    ViewBag.Title = "BokkingDetails";
+    Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
+}
+
+<h2>Szczegóły rezerwacji</h2>
+
+<h3>Id Samochodu : @Model.bookingModel.carId</h3>
+<h3>Id Użytkownika : @Model.bookingModel.userId</h3>
+<h3>Data od : @Model.bookingModel.DateTimeFrom</h3>
+<h3>Data do : @Model.bookingModel.DateTimeTo</h3>
+<h3>Cena : @Model.bookingModel.TotalPrice</h3>
+@*<h3>
+    Status :
+    @Html.DropDownListFor(o => o.bookingModel.OrderStatusId.id, new SelectList(@Model.orderStatus, "Value", "Text"))
+    @Html.ActionLink("Aktualizuj","UpdateStatus",new {orderId = @Model.bookingModel.Id, statusId = 1}, new { @class = "btn btn-primary" })
+</h3>*@
+
+@using (Html.BeginForm("UpdateStatus", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(o => o.bookingModel.Id);
+
+    @Html.DropDownListFor(o => o.bookingModel.OrderStatusId.id, new SelectList(@Model.orderStatus, "Value", "Text"))
+    <input type="submit" value="Submit" />
+}

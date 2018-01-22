@@ -5,7 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using System.Web.UI.WebControls;
 using Rentalis_v2.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using MySql.Data.MySqlClient;
 
 namespace Rentalis_v2.Controllers
 {
@@ -184,6 +189,114 @@ namespace Rentalis_v2.Controllers
             return View(bookings);
         }
 
+        public ActionResult BokkingDetails(int id)
+        {
+            BookingDetailsViewModel booking = new BookingDetailsViewModel();
+
+            booking.bookingModel = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == id);
+            var statusList = _context.orderStatusModels.ToList();
+            List<SelectListItem> test = new List<SelectListItem>();
+            foreach (var status in statusList)
+            {
+                test.Add(new SelectListItem
+                {
+                    Text = status.name,
+                    Value = status.id.ToString()
+                });
+            }
+
+            booking.orderStatus = test;
+
+            //var booking = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == id);
+
+            return View(booking);
+        }
+
+        public ActionResult UpdateStatus(BookingDetailsViewModel booking)
+        {
+            var order = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == booking.bookingModel.Id);
+
+            order.OrderStatusId = _context.orderStatusModels.Single(c => c.id == booking.bookingModel.OrderStatusId.id);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Bookings");
+        }
+
+        public ActionResult Users()
+        {
+            //var users = _context.Users.ToList();
+
+            var usersWithRoles = (from user in _context.Users
+                from userRole in user.Roles
+                join role in _context.Roles on userRole.RoleId equals
+                role.Id
+                select new UsersViewModel()
+                {
+                    UserId = user.Id,
+                    Username = user.UserName,
+                    Email = user.Email,
+                    Role = role.Name
+                }).ToList();
+
+            return View(usersWithRoles);
+        }
+
+        public ActionResult UserDetails(string userId)
+        {
+
+            var rolesList = _context.Roles.ToList();
+            List<SelectListItem> roles = new List<SelectListItem>();
+            foreach (var role in rolesList)
+            {
+                roles.Add(new SelectListItem
+                {
+                    Text = role.Name,
+                    Value = role.Id
+                });
+            }
+
+            var userWithRoles = (from user in _context.Users
+                from userRole in user.Roles
+                join role in _context.Roles on userRole.RoleId equals
+                role.Id where user.Id == userId
+                select new AdminUserDetailsViewModel()
+                {
+                    userId = user.Id,
+                    userName = user.UserName,
+                    email = user.Email,
+                    RoleId = role.Id,
+                }).Single();
+
+            AdminUserDetailsViewModel userDetails = new AdminUserDetailsViewModel();
+            userDetails = userWithRoles;
+            userDetails.RoleList = roles;
+
+            return View(userDetails);
+        }
+
+        public ActionResult UpdateUserRole(/*string userId, string roleId*/AdminUserDetailsViewModel userDetails)
+        {
+
+            string query = String.Format(@"UPDATE aspnetuserroles SET RoleId='{0}' WHERE UserId LIKE '{1}'",userDetails.RoleId, userDetails.userId);
+
+            MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
+            try
+            {
+                using (MySqlCommand cmdDatabase = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+                    cmdDatabase.ExecuteNonQuery();
+
+                    return RedirectToAction("Users");
+                }
+            }
+            catch (Exception e)
+            {
+                return HttpNotFound();
+            }
+
+        }
         //[HttpPost, ActionName("DeleteCar")]
         //public ActionResult DeleteCar(int id)
         //{

@@ -39,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.OrderStatusId.name)
             </td>
             <td>
-                @Html.ActionLink("Szczegóły", "EditCar", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Szczegóły", "BokkingDetails", "Admin", new { id = item.Id }, new { @class = "btn btn-primary" })
             </td>
             
         </tr>

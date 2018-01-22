@@ -34,13 +34,13 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="~/Admin/Index">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="~/Admin/Bookings">
                     <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
                     <span class="nav-link-text">Rezerwacje</span>
                 </a>
@@ -52,7 +52,7 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseUsers">
                     <li>
-                        <a href="login.html">Klienci</a>
+                        <a href="~/Admin/Users">Klienci</a>
                     </li>
                     <li>
                         <a href="register.html">Pracownicy</a>
@@ -66,19 +66,19 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li>
-                        <a href="login.html"><i class="fa fa-list" aria-hidden="true"></i> Lista</a>
+                        <a href="~/Admin/Cars"><i class="fa fa-list" aria-hidden="true"></i> Lista</a>
                     </li>
                     <li>
                         
-                        <a href="register.html"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj nowy</a>
+                        <a href="~/Admin/AddCar"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj nowy</a>
                     </li>
                     <li>
-                        <a href="forgot-password.html"><i class="fa fa-wrench" aria-hidden="true"></i> Serwis</a>
+                        <a href="~/Service/Create"><i class="fa fa-wrench" aria-hidden="true"></i> Serwis</a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="~/Home/Index">
                     <i class="fa fa-backward" aria-hidden="true"></i>
                     <span class="nav-link-text">Rentalis</span>
                 </a>
@@ -97,7 +97,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
+        @*<ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
@@ -107,7 +107,7 @@
         <hr>
         <p>The SB Admin navbar can be either fixed or static, and it supports the navbar-light and navbar-dark Bootstrap 4 classes.</p>
         <a class="btn btn-primary" href="#" id="toggleNavPosition">Toggle Fixed/Static Navbar</a>
-        <a class="btn btn-primary" href="#" id="toggleNavColor">Toggle Navbar Color</a>
+        <a class="btn btn-primary" href="#" id="toggleNavColor">Toggle Navbar Color</a>*@
         <!-- Blank div to give the page height to preview the fixed vs. static navbar-->
         @*<div style="height: 1000px;"></div>*@
         @RenderBody()
