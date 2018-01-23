@@ -291,6 +291,18 @@
     <Compile Include="Migrations\201801221700425_AddRoles.Designer.cs">
       <DependentUpon>201801221700425_AddRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801222152021_Zmiana-z-length-na-data.cs" />
+    <Compile Include="Migrations\201801222152021_Zmiana-z-length-na-data.Designer.cs">
+      <DependentUpon>201801222152021_Zmiana-z-length-na-data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801231442131_Imie_do_Identity.cs" />
+    <Compile Include="Migrations\201801231442131_Imie_do_Identity.Designer.cs">
+      <DependentUpon>201801231442131_Imie_do_Identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801231558090_Register_fields.cs" />
+    <Compile Include="Migrations\201801231558090_Register_fields.Designer.cs">
+      <DependentUpon>201801231558090_Register_fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserDetailsViewModel.cs" />
@@ -1259,6 +1271,7 @@
     <Content Include="Views\Service\index.cshtml" />
     <Content Include="Views\Service\ServiceDetails.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1345,6 +1358,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801221700425_AddRoles.resx">
       <DependentUpon>201801221700425_AddRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801222152021_Zmiana-z-length-na-data.resx">
+      <DependentUpon>201801222152021_Zmiana-z-length-na-data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801231442131_Imie_do_Identity.resx">
+      <DependentUpon>201801231442131_Imie_do_Identity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801231558090_Register_fields.resx">
+      <DependentUpon>201801231558090_Register_fields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

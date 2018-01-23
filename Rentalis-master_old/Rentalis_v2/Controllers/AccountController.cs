@@ -152,7 +152,7 @@ namespace Rentalis_v2.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = model.Name, Surname = model.Surname, Age = model.Age, CarLicenceNumber = model.CarLicenceNumber, Adress = model.Adress };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

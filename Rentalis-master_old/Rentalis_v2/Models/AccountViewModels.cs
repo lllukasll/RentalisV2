@@ -79,6 +79,13 @@ namespace Rentalis_v2.Models
         [Display(Name = "Potwierdź hasło")]
         [Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie są niezgodne.")]
         public string ConfirmPassword { get; set; }
+
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public uint Age { get; set; }
+        //public int TypeofClient { get; set; }
+        public string CarLicenceNumber { get; set; }
+        public string Adress { get; set; }
     }
 
     public class ResetPasswordViewModel

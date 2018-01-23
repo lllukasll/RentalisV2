@@ -291,11 +291,16 @@ namespace Rentalis_v2.Controllers
                     return RedirectToAction("Users");
                 }
             }
-            catch (Exception e)
+            catch 
             {
                 return HttpNotFound();
             }
 
+        }
+
+        public ActionResult AddUser()
+        {
+            return View();
         }
         //[HttpPost, ActionName("DeleteCar")]
         //public ActionResult DeleteCar(int id)

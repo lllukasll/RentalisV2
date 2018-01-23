@@ -56,12 +56,12 @@ namespace Rentalis_v2.Controllers
             {
                 serviceName = viewModel.serviceName,
                 Description = viewModel.Description,
-                DateTime = viewModel.DateTime,
-                LengthService = viewModel.LengthService
+                FromDateTime = viewModel.FromDateTime,
+                ToDateTime = viewModel.ToDateTime
             };
             _context.carServices.Add(service);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Admin");
         }
         
 
