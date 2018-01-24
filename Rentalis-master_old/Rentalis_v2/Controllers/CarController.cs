@@ -114,8 +114,8 @@ namespace Rentalis_v2.Controllers
 
         public ActionResult ConfirmRent(int id, DateTime DateFrom, DateTime DateTo, double TotalPrice, string userId)
         {
-            string dT = DateTo.ToString("yyyyMMddhhmmss");
-            string dF = DateFrom.ToString("yyyyMMddhhmmss");
+            string dT = DateTo.ToString("yyyyMMddHHmmss");
+            string dF = DateFrom.ToString("yyyyMMddHHmmss");
 
             string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},1)", id,userId,dF,dT,TotalPrice);
             //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
