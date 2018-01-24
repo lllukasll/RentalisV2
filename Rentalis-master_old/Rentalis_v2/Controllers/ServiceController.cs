@@ -92,6 +92,7 @@ namespace Rentalis_v2.Controllers
                 Description = viewModel.Description,
                 FromDateTime = viewModel.FromDateTime,
                 ToDateTime = viewModel.ToDateTime,
+                Price = viewModel.Price,
                 CarModel = car
             };
             _context.carServices.Add(service);
@@ -109,20 +110,25 @@ namespace Rentalis_v2.Controllers
         }
 
         // POST: Service/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //public ActionResult Edit(int id)
+        //{
+           
+        //    try
+        //    {
+        //        // TODO: Add update logic here
+        //        //var services = _context.carServices.Single(s => s.Id == id);
+        //        //var viewModel = ServiceCarViewModel
+        //        //    {
+        //        //     = _context.carModels.ToList();
+        //        //}
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: Service/Delete/5
         public ActionResult Delete(int id)

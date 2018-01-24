@@ -30,7 +30,9 @@
                 <th>
                     Data odebrania Auta od naprawy
                 </th>
-
+                <th>
+                    Cena Naprawy
+                </th>
                 @*<th>
             @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
@@ -67,9 +69,10 @@
                     @Html.DisplayFor(modelItem => item.ToDateTime)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Price)
                     @*@Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "btn btn-warning" })
-            @Html.ActionLink("Read More", "Details", new { id = item.PostID }, new { @class = "btn btn-info" })
-            @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "btn btn-danger" })*@
+        @Html.ActionLink("Read More", "Details", new { id = item.PostID }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "btn btn-danger" })*@
                 </td>
             </tr>
                 }

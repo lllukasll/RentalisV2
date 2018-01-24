@@ -303,6 +303,10 @@
     <Compile Include="Migrations\201801231558090_Register_fields.Designer.cs">
       <DependentUpon>201801231558090_Register_fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801241204037_Add_Price_to_service.cs" />
+    <Compile Include="Migrations\201801241204037_Add_Price_to_service.Designer.cs">
+      <DependentUpon>201801241204037_Add_Price_to_service.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserDetailsViewModel.cs" />
@@ -1367,6 +1371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801231558090_Register_fields.resx">
       <DependentUpon>201801231558090_Register_fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801241204037_Add_Price_to_service.resx">
+      <DependentUpon>201801241204037_Add_Price_to_service.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

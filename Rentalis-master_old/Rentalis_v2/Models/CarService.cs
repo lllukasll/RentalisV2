@@ -19,8 +19,12 @@ namespace Rentalis_v2.Models
 
         [Required(ErrorMessage = "Pole Nazwa nie może być puste")]
         public DateTime FromDateTime { get; set; }
+
         [Required(ErrorMessage = "Pole Nazwa nie może być puste")]
         public DateTime ToDateTime { get; set; }
+
+        [Required(ErrorMessage = "Pole Nazwa nie może być puste")]
+        public decimal Price { get; set; }
 
         public virtual CarModels CarModel { get; set; }
        
