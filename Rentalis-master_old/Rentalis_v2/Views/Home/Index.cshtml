@@ -1,443 +1,467 @@
 ﻿@*@{
-	ViewBag.Title = "Home Page";
-}
-<script>
-	$('#sandbox-container .input-daterange').datepicker({
-	});
-</script>
-<div class="jumbotron">
-	<h1>Rentalis</h1>
-	<p class="lead">Wypożyczalnia samochodów online</p>
-	<p><a href="https://asp.net" class="btn btn-primary btn-lg">O nas &raquo;</a></p>
-</div>
-	
+        ViewBag.Title = "Home Page";
+    }
+    <script>
+        $('#sandbox-container .input-daterange').datepicker({
+        });
+    </script>
+    <div class="jumbotron">
+        <h1>Rentalis</h1>
+        <p class="lead">Wypożyczalnia samochodów online</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">O nas &raquo;</a></p>
+    </div>
 
-<h2>Nasze samochody : <a href="/Home/Cars" class="btn btn-primary">Zobacz</a> </h2>
 
-<h2>Wybierz termin wypożyczenia w celu sprawdzenia dostępności samochodów : </h2>
-<form action="" method="post">
-		<div>
-			<label for="from">Od:</label>
-			<input id="from" type="datetime-local" name="dateFrom" required>
-			
-			<label for="to">Do:</label>
-			<input id="to" type="datetime-local" name="dateTo" required>
-		</div>
-		<div>
-			<input type="submit" value="Sprawdź dostępność" class="btn btn-primary">
-		</div>
-	</form>
-			
-<div>
-	<a href="/Home/Cars">Lub zobacz wszystkie dostępne samochody :</a>
-</div>*@
+    <h2>Nasze samochody : <a href="/Home/Cars" class="btn btn-primary">Zobacz</a> </h2>
+
+    <h2>Wybierz termin wypożyczenia w celu sprawdzenia dostępności samochodów : </h2>
+    <form action="" method="post">
+            <div>
+                <label for="from">Od:</label>
+                <input id="from" type="datetime-local" name="dateFrom" required>
+
+                <label for="to">Do:</label>
+                <input id="to" type="datetime-local" name="dateTo" required>
+            </div>
+            <div>
+                <input type="submit" value="Sprawdź dostępność" class="btn btn-primary">
+            </div>
+        </form>
+
+    <div>
+        <a href="/Home/Cars">Lub zobacz wszystkie dostępne samochody :</a>
+    </div>*@
+
 
 @{
-	ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home Page";
 }
 <script>
-	$('#sandbox-container .input-daterange').datepicker({
-	});
+    $('#sandbox-container .input-daterange').datepicker({
+    });
 </script>
 
-<div id="gtco-header" data-section="home" class="gtco-cover header-fixed" role="banner" style="background-image: url('../../Content/img/img_bg_3.png');">
-	<div class="overlay"></div>
-	<div class="gtco-container">
-		<div class="row">
-			<div class="col-md-12 col-md-offset-0 text-center">
-				<div class="display-t">
-					<div class="display-tc">
-					    <h1 class="animate-box" data-animate-effect="fadeIn">Wybierz datę wypożyczenia</h1>
-					    <form action="" method="post" class="animate-box" data-animate-effect="fadeIn">
-					        <div>
-					            <label for="from">Od:</label>
-					            <input id="from" type="datetime-local" name="dateFrom" required>
-			
-					            <label for="to">Do:</label>
-					            <input id="to" type="datetime-local" name="dateTo" required>
-					        </div>
-					        <div>
-					            <br/>
-					            <input type="submit" value="Sprawdź dostępność" class="btn btn-primary btn-lg">
-					        </div>
-					    </form>
-						@*<h2 class="animate-box" data-animate-effect="fadeIn">Free HTML5 Bootstrap Templates Made <em>by</em> <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a></h2>*@
-						@*<p class="animate-box" data-animate-effect="fadeIn"><a href="#" class="btn btn-primary btn-lg">Sign Up for Free</a></p>*@
-						<p class="gtco-video-link animate-box" data-animate-effect="fadeIn"><a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-controller-play"></i> Watch the Video</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div id="gtco-header" data-section="home" class="fill-screen gtco-cover header-fixed" role="banner" style="background-image: url('../../Content/img/img_bg_3.png');">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-center">
+                <div class="display-t">
+                    <div class="display-tc">
+                        <h1 class="animate-box" data-animate-effect="fadeIn">Wybierz datę wypożyczenia</h1>
+                        <form action="" method="post" class="animate-box" data-animate-effect="fadeIn">
+                            <div>
+                                <label for="from">Od:</label>
+                                <input id="from" type="datetime-local" name="dateFrom" required>
+
+                                <label for="to">Do:</label>
+                                <input id="to" type="datetime-local" name="dateTo" required>
+                            </div>
+                            <div>
+                                <br />
+                                <input type="submit" value="Sprawdź dostępność" class="btn btn-primary btn-lg">
+                            </div>
+                        </form>
+                        @*<h2 class="animate-box" data-animate-effect="fadeIn">Free HTML5 Bootstrap Templates Made <em>by</em> <a href="http://gettemplates.co/" target="_blank">GetTemplates.co</a></h2>*@
+                        @*<p class="animate-box" data-animate-effect="fadeIn"><a href="#" class="btn btn-primary btn-lg">Sign Up for Free</a></p>*@
+                        <p class="gtco-video-link animate-box" data-animate-effect="fadeIn"><a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-controller-play"></i> Watch the Video</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-	
+
 <div id="gtco-features" class="border-bottom" data-section="features">
-	<div class="gtco-container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-				<h2>Usable Features</h2>
-				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-sm-6">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-vector"></i>
-					</span>
-					<h3>Pixel Perfect</h3>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-tablet"></i>
-					</span>
-					<h3>Fully Responsive</h3>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-settings"></i>
-					</span>
-					<h3>Web Development</h3>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-ruler-pencil"></i>
-					</span>
-					<h3>Web Design</h3>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-sm-6">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-ticket"></i>
-					</span>
-					<h3>Use Our Coupons</h3>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-shield"></i>
-					</span>
-					<h3>High Level Security</h3>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-gift"></i>
-					</span>
-					<h3>100% Free Download</h3>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                <h2>Dlaczego my?</h2>
+                <p>Wypożyczalnia samochodów Rentalis cechuje się wysoką jakością oferowanych samochodów. Wszystkie nasze pojazdy są nowe: najstarszy model ma 2 lata. Ze szczególną starannością dbamy o sprawność techniczną pojazdów.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-email"></i>
+                    </span>
+                    <h3>Szybki Kontakt</h3>
+                    <p>Współpracując z naszą firmą otrzymasz najlepszą pomoc w razie problemów technicznych </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-car"></i>
+                    </span>
+                    <h3>Szybka Rezerwacja</h3>
+                    <p>Teraz łatwo, szybko i bezpiecznie dokonasz rezerwacji online wybranego samochodu </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-truck"></i>
+                    </span>
+                    <h3>Najlepsze ceny dla firm!</h3>
+                    <p>Dla tych, którzy potrzebują samochodu w ramach prowadzonej działalności Europcar przygotował serię korzystnych rozwiązań.  </p>
+                </div>
+            </div> @*
+                <div class="col-md-3 col-sm-6">
+                    <div class="feature-center">
+                        <span class="icon">
+                            <i class="ti-dashboard"></i>
+                        </span>
+                        <h3>Web Design</h3>
+                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+                    </div>
+                </div>*@
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-face-smile"></i>
+                    </span>
+                    <h3>Grono zadowolonych klientów</h3>
+                    <p>Zadowolenie klientów siega aż 98% najlepsza obsługa</p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-timer"></i>
+                    </span>
+                    <h3>
+                        CAŁODOBOWA
+                        OBSŁUGA
+                    </h3>
+                    <p>Zapewniamy całodobowe wsparcie telefoniczne - dzięki temu zawsze możesz liczyć na naszą pomoc </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-location-pin"></i>
+                    </span>
+                    <h3>
+                        PODSTAWIENIE
+                        ZA DARMO
+                    </h3>
+                    <p>Podstawienia samochodów wykonujemy za darmo na wszystkich lotniskach w Polsce dla rezerwacji od 7 dni </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-<div class="gtco-section border-bottom" id="how-it-works" data-section="how-it-works">
-	<div class="gtco-container">
-		<div class="row">
-			<div class="col-md-6">
+@*<div class="gtco-section border-bottom" id="how-it-works" data-section="how-it-works">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-6">
 
-				<div class="gtco-heading">
-					<h2 class="gtco-left">How It Works</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
+                    <div class="gtco-heading">
+                        <h2 class="gtco-left">How It Works</h2>
+                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                    </div>
 
-				<div class="row">
+                    <div class="row">
 
-					<div class="col-md-12">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-check"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Web Development</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-check"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Web Design</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-check"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Customer Support</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-12">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-check"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Web Design</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p><a href="#" class="btn btn-primary btn-lg btn-block"><i class="icon-apple"></i> Buy This App on App Store</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-				<img src="~/Content/img/iphone.png" alt="Free HTML5 Bootstrap Template" class="img-responsive">
-			</div>
-		</div>
-	</div>
-</div>
+                        <div class="col-md-12">
+                            <div class="feature-left">
+                                <span class="icon">
+                                    <i class="icon-check"></i>
+                                </span>
+                                <div class="feature-copy">
+                                    <h3>Web Development</h3>
+                                    <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="feature-left">
+                                <span class="icon">
+                                    <i class="icon-check"></i>
+                                </span>
+                                <div class="feature-copy">
+                                    <h3>Web Design</h3>
+                                    <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="feature-left">
+                                <span class="icon">
+                                    <i class="icon-check"></i>
+                                </span>
+                                <div class="feature-copy">
+                                    <h3>Customer Support</h3>
+                                    <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="feature-left">
+                                <span class="icon">
+                                    <i class="icon-check"></i>
+                                </span>
+                                <div class="feature-copy">
+                                    <h3>Web Design</h3>
+                                    <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p><a href="#" class="btn btn-primary btn-lg btn-block"><i class="icon-apple"></i> Buy This App on App Store</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
+                    <img src="~/Content/img/iphone.png" alt="Free HTML5 Bootstrap Template" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>*@
 
-	
+
 
 <div class="gtco-section" id="gtco-faq" data-section="faq">
-	<div class="gtco-container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-				<h2>Frequently Ask Questions</h2>
-				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                <h2>Najczęściej zadawane pytania</h2>
+                @*// <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>*@
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
 
-				<div class="gtco-accordion">
-					<div class="gtco-accordion-heading">
-						<div class="icon"><i class="icon-cross"></i></div>
-						<h3>What is Usable?</h3>
-					</div>
-					<div class="gtco-accordion-content">
-						<div class="inner">
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</div>
-					</div>
-				</div>
-				<div class="gtco-accordion">
-					<div class="gtco-accordion-heading">
-						<div class="icon"><i class="icon-cross"></i></div>
-						<h3>I have technical problem, who do I email?</h3>
-					</div>
-					<div class="gtco-accordion-content">
-						<div class="inner">
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</div>
-					</div>
-				</div>
-				<div class="gtco-accordion">
-					<div class="gtco-accordion-heading">
-						<div class="icon"><i class="icon-cross"></i></div>
-						<h3>How do I use Usable features?</h3>
-					</div>
-					<div class="gtco-accordion-content">
-						<div class="inner">
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</div>
-					</div>
-				</div>
+                <div class="gtco-accordion">
+                    <div class="gtco-accordion-heading">
+                        <div class="icon"><i class="icon-cross"></i></div>
+                        <h3>Kto może wynająć samochód?</h3>
+                    </div>
+                    <div class="gtco-accordion-content">
+                        <div class="inner">
+                            <p>Każdy kto skończył 21 lat i minimum od roku posiada ważne prawo jazdy, uprawniające do kierowania samochodem na terenie Polski.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gtco-accordion">
+                    <div class="gtco-accordion-heading">
+                        <div class="icon"><i class="icon-cross"></i></div>
+                        <h3>Czy trzeba mieć kartę kredytową, żeby wynająć samochód?</h3>
+                    </div>
+                    <div class="gtco-accordion-content">
+                        <div class="inner">
+                            <p>Nie. Wystarczy karta debetowa. Jeśli rezerwujesz samochód z minimum trzydniowym wyprzedzeniem, możesz też zapłacić za wynajem przelewem on-line albo przelewem tradycyjnym. Pamiętaj jednak, że zawsze będzie potrzebna karta płatnicza (kredytowa lub debetowa), aby na czas wynajmu zablokować na karcie zwrotny depozyt.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gtco-accordion">
+                    <div class="gtco-accordion-heading">
+                        <div class="icon"><i class="icon-cross"></i></div>
+                        <h3>Jak można zarezerwować samochód?</h3>
+                    </div>
+                    <div class="gtco-accordion-content">
+                        <div class="inner">
+                            <p>Najłatwiej przez nasz internetowy formularz rezerwacji. Należy w nim wybrać preferowaną klasę samochodu, daty odbioru i zwrotu, wyposażenie dodatkowe, podać swoje dane oraz dokonać płatności. Potwierdzeniem dokonania rezerwacji jest mail zwrotny wysłany na podany podczas rezerwacji adres mailowy. Jeśli nie masz dostępu do internetu, możesz skorzystać z naszej infolinii (+48) 123 000 300 lub skontaktować się bezpośrednio z wybranym oddziałem. Dane kontaktowe wszystkich oddziałów znajdziesz na stronie.</p>
+                        </div>
+                    </div>
+                </div>
 
-			</div>
-			<div class="col-md-6">
+            </div>
+            <div class="col-md-6">
 
-				<div class="gtco-accordion">
-					<div class="gtco-accordion-heading">
-						<div class="icon"><i class="icon-cross"></i></div>
-						<h3>What language are available?</h3>
-					</div>
-					<div class="gtco-accordion-content">
-						<div class="inner">
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</div>
-					</div>
-				</div>
-				<div class="gtco-accordion">
-					<div class="gtco-accordion-heading">
-						<div class="icon"><i class="icon-cross"></i></div>
-						<h3>Can I have a username that is already taken?</h3>
-					</div>
-					<div class="gtco-accordion-content">
-						<div class="inner">
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</div>
-					</div>
-				</div>
-				<div class="gtco-accordion">
-					<div class="gtco-accordion-heading">
-						<div class="icon"><i class="icon-cross"></i></div>
-						<h3>Is Usable free?</h3>
-					</div>
-					<div class="gtco-accordion-content">
-						<div class="inner">
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</div>
-					</div>
-				</div>
+                <div class="gtco-accordion">
+                    <div class="gtco-accordion-heading">
+                        <div class="icon"><i class="icon-cross"></i></div>
+                        <h3>Jakie dokumenty trzeba mieć, żeby wynająć samochód?</h3>
+                    </div>
+                    <div class="gtco-accordion-content">
+                        <div class="inner">
+                            <p>
+                                Prawo jazdy i drugi dokument tożsamości (dowód osobisty albo paszport).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gtco-accordion">
+                    <div class="gtco-accordion-heading">
+                        <div class="icon"><i class="icon-cross"></i></div>
+                        <h3>Ile kosztuje wynajem samochodu w Rentalis?</h3>
+                    </div>
+                    <div class="gtco-accordion-content">
+                        <div class="inner">
+                            <p>
+                                Ceny samochodów są różne, w zależności od wybranej klasy. Można je sprawdzić w cenniku. Jeśli rezerwujesz samochód poprzez formularz na stronie internetowej, od razu widzisz ile kosztuje Twój wynajem i wybrane wyposażenie. System automatycznie naliczy też zniżki i promocje. W przypadku rezerwacji telefonicznej albo w oddziale nasz pracownik skalkuluje cenę wynajmu i poinformuje Cię o wszystkich składających się na nią opłatach.
 
-			</div>
-		</div>
-	</div>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gtco-accordion">
+                    <div class="gtco-accordion-heading">
+                        <div class="icon"><i class="icon-cross"></i></div>
+                        <h3>Czy samochody mają limit kilometrów?</h3>
+                    </div>
+                    <div class="gtco-accordion-content">
+                        <div class="inner">
+                            <p>
+                                Nie. Możesz przejechać wynajętym samochodem tyle kilometrów, ile zechcesz.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <div id="gtco-counter" class="gtco-section">
-	<div class="gtco-container">
+    <div class="gtco-container">
 
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-				<h2>Fun Facts</h2>
-				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-			</div>
-		</div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                <h2>Fakty o Nas</h2>
+                @*<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>*@
+            </div>
+        </div>
 
-		<div class="row">
-				
-			<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-download"></i>
-					</span>
-					<span class="counter js-counter" data-from="0" data-to="2122070" data-speed="5000" data-refresh-interval="50">1</span>
-					<span class="counter-label">Downloads</span>
+        <div class="row">
 
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-face-smile"></i>
-					</span>
-					<span class="counter js-counter" data-from="0" data-to="402002" data-speed="5000" data-refresh-interval="50">1</span>
-					<span class="counter-label">Happy Clients</span>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-briefcase"></i>
-					</span>
-					<span class="counter js-counter" data-from="0" data-to="402" data-speed="5000" data-refresh-interval="50">1</span>
-					<span class="counter-label">Projects Done</span>
-				</div>
-			</div>
-			<div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-				<div class="feature-center">
-					<span class="icon">
-						<i class="ti-time"></i>
-					</span>
-					<span class="counter js-counter" data-from="0" data-to="212023" data-speed="5000" data-refresh-interval="50">1</span>
-					<span class="counter-label">Hours Spent</span>
+            <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-car"></i>
+                    </span>
+                    <span class="counter js-counter" data-from="0" data-to="1709" data-speed="5000" data-refresh-interval="50">1</span>
+                    <span class="counter-label">Tyle Mamy Samochodów</span>
 
-				</div>
-			</div>
-					
-		</div>
-	</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-face-smile"></i>
+                    </span>
+                    <span class="counter js-counter" data-from="0" data-to="402002" data-speed="5000" data-refresh-interval="50">1</span>
+                    <span class="counter-label">Zadowoleni Klienci</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-calendar"></i>
+                    </span>
+                    <span class="counter js-counter" data-from="0" data-to="40212" data-speed="5000" data-refresh-interval="50">1</span>
+                    <span class="counter-label">TYLE WYPOŻYCZEŃ</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="feature-center">
+                    <span class="icon">
+                        <i class="ti-time"></i>
+                    </span>
+                    <span class="counter js-counter" data-from="0" data-to="212023" data-speed="5000" data-refresh-interval="50">1</span>
+                    <span class="counter-label">Na tyle godzin wypożyczyliśmy samochody</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="gtco-products" data-section="products">
-	<div class="gtco-container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-				<h2>Products</h2>
-				<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="owl-carousel owl-carousel-carousel">
-				<div class="item">
-					<img src="~/Content/img/img_1.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
-				</div>
-				<div class="item">
-					<img src="~/Content/img/img_2.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
-				</div>
-				<div class="item">
-					<img src="~/Content/img/img_3.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
-				</div>
-				<div class="item">
-					<img src="~/Content/img/img_4.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                <h2>Nasze Samochody</h2>
+                @*<p>Nasze Eksluzywne auta najstarsze są z 3 letnie</p>*@
+            </div>
+        </div>
+        <div class="row">
+            <div class="owl-carousel owl-carousel-carousel">
+                <div class="item">
+                    <img src="~/Content/img/1.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+                </div>
+                <div class="item">
+                    <img src="~/Content/img/2.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+                </div>
+                <div class="item">
+                    <img src="~/Content/img/2.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+                </div>
+                <div class="item">
+                    <img src="~/Content/img/4.jpg" alt="Free HTML5 Bootstrap Template by GetTemplates.co">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-	
 
-<div id="gtco-subscribe">
-	<div class="gtco-container">
-		<div class="row">
-			<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-				<h2>Subscribe</h2>
-				<p>Be the first to know about the new templates.</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<form class="form-inline">
-					<div class="col-md-4 col-sm-4">
-						<div class="form-group">
-							<label for="email" class="sr-only">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="Your Email">
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<div class="form-group">
-							<label for="name" class="sr-only">Name</label>
-							<input type="text" class="form-control" id="name" placeholder="Your Name">
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-4">
-						<button type="submit" class="btn btn-danger btn-block">Subscribe</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-	
+
+@*<div id="gtco-subscribe">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                    <h2>Subscribe</h2>
+                    <p>Be the first to know about the new templates.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-inline">
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <button type="submit" class="btn btn-danger btn-block">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
 <div id="gtco-contact" data-section="contact" class="gtco-cover gtco-cover-xs" style="background-image:url(~/Content/img/img_bg_2.jpg);">
-	<div class="overlay"></div>
-	<div class="gtco-container">
-		<div class="row text-center">
-			<div class="display-t">
-				<div class="display-tc">
-					<div class="col-md-12">
-						<h3>If you have inqueries please email us at <a href="#">info@yourdomain.com</a></h3>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row text-center">
+            <div class="display-t">
+                <div class="display-tc">
+                    <div class="col-md-12">
+                        <h3>Jeśli masz jakieś pytania napisz Emaila <a href="#">rentalis@wp.com</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $(window).on("load resize", function () {
+                $(".fill-screen").css("height", window.innerHeight);
+            });
+        });
+    </script>
+}
