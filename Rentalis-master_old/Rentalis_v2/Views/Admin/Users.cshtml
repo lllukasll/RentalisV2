@@ -4,28 +4,82 @@
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 
-<h2>Users</h2>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">My Dashboard</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 well">
+                <a class="btn btn-primary" style="color: white;" data-toggle="modal" data-target="#usuario"><i class="fa fa-fw -square -circle fa-plus-square"></i> Dodaj użytkownika</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="tableAnnounce" class="table table-hover table-striped " >
+                    <tbody>
+                    @*<tr>
+                        <td>
+                            <a href="#"><i class="-alt fa fa-2x fa-eye fa-fw"></i></a>
+                        </td>
+                        <td>
+                            <h4>
+                                <b>Asistente de sistemas</b>
+                            </h4>
+                            <p>asddas</p>
+                        </td>
+                        <td>
+                            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png" class="img-circle" width="60">
+                        </td>
+                        <td>
+                            <h4>
+                                <b>Ramón Villa Awad</b>
+                            </h4>
+                            <a href="mailto:ramonvillaw@gmail.com">ramonvillaw@gmail.com</a>
+                        </td>
+                        <td>2 años</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-default" value="left" type="button">
+                                    <i class="fa fa-fw s fa-remove"></i>Eliminar</button>
+                                <button class="btn btn-default" value="right" type="button">
+                                    <i class="fa fa-fw fa-cog"></i>Configurar</button>
+                            </div>
+                        </td>
+                    </tr>*@
+                    <tr>
+                        <th>Id</th>
+                        <th>Login</th>
+                        <th>Email</th>
+                        <th>Rola</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserId</td>
+                            <td>@user.Username</td>
+                            <td>@user.Email</td>
+                            <td>@user.Role</td>
+                            <td>@Html.ActionLink("Szczegóły", "UserDetails", "Admin", new {userId = @user.UserId}, new {@class = "btn btn-primary"})</td>
+                        </tr>
+                    }
 
-<table id="tableAnnounce" class="table table-advance table-hover table-condemed " >
-    <tbody>
-    <tr>
-        <th>Id</th>
-        <th>Login</th>
-        <th>Email</th>
-        <th>Rola</th>
-        <th></th>
-    </tr>
-    @foreach (var user in Model)
-    {
-        <tr>
-            <td>@user.UserId</td>
-            <td>@user.Username</td>
-            <td>@user.Email</td>
-            <td>@user.Role</td>
-            <td>@Html.ActionLink("Szczegóły", "UserDetails", "Admin", new {userId = @user.UserId}, new {@class = "btn btn-primary"})</td>
-        </tr>
-    }
-
-    </tbody>
-</table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
