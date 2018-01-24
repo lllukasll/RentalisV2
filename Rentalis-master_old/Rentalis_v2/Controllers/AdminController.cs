@@ -14,6 +14,7 @@ using MySql.Data.MySqlClient;
 
 namespace Rentalis_v2.Controllers
 {
+    
     public class AdminController : Controller
     {
         private ApplicationDbContext _context;
@@ -29,11 +30,13 @@ namespace Rentalis_v2.Controllers
         }
 
         // GET: Admin
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult Cars()
         {
             var cars = _context.carModels.ToList();
@@ -41,12 +44,14 @@ namespace Rentalis_v2.Controllers
             return View(cars);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult AddCar()
         {
             return View();
         }
 
         [HttpPost, ValidateInput(false)]
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult SaveCar(CarModels car)
         {
             if (!ModelState.IsValid)
@@ -78,7 +83,8 @@ namespace Rentalis_v2.Controllers
                 FuelType = car.FuelType,
                 Type = car.Type,
 
-                PricePerDay = car.PricePerDay
+                PricePerDay = car.PricePerDay,
+                PlateNumber = car.PlateNumber
             };
 
             if (car.Id == null)
@@ -107,6 +113,7 @@ namespace Rentalis_v2.Controllers
                 carInDb.Type = NewCar.Type;
 
                 carInDb.PricePerDay = NewCar.PricePerDay;
+                carInDb.PlateNumber = NewCar.PlateNumber;
             }
 
             _context.SaveChanges();
@@ -142,6 +149,7 @@ namespace Rentalis_v2.Controllers
             return imageBytes;
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult CarDetails(int id)
         {
             var car = _context.carModels.SingleOrDefault(c => c.Id == id);
@@ -152,6 +160,7 @@ namespace Rentalis_v2.Controllers
             return View(car);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult EditCar(int id)
         {
             var car = _context.carModels.SingleOrDefault(c => c.Id == id);
@@ -162,6 +171,7 @@ namespace Rentalis_v2.Controllers
             return View("AddCar",car);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult DeleteCar(int id)
         {
             var car = _context.carModels.SingleOrDefault(c => c.Id == id);
@@ -172,6 +182,7 @@ namespace Rentalis_v2.Controllers
             return View(car);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult DeleteCarFromDb(CarModels car)
         {
             var carInDb = _context.carModels.Single(c => c.Id == car.Id);
@@ -182,6 +193,7 @@ namespace Rentalis_v2.Controllers
             return RedirectToAction("Cars");
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult Bookings()
         {
             var bookings = _context.bookingModels.Include(c => c.OrderStatusId).ToList();
@@ -189,6 +201,7 @@ namespace Rentalis_v2.Controllers
             return View(bookings);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult BokkingDetails(int id)
         {
             BookingDetailsViewModel booking = new BookingDetailsViewModel();
@@ -212,6 +225,7 @@ namespace Rentalis_v2.Controllers
             return View(booking);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult UpdateStatus(BookingDetailsViewModel booking)
         {
             var order = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == booking.bookingModel.Id);
@@ -223,6 +237,7 @@ namespace Rentalis_v2.Controllers
             return RedirectToAction("Bookings");
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult Users()
         {
             //var users = _context.Users.ToList();
@@ -242,6 +257,7 @@ namespace Rentalis_v2.Controllers
             return View(usersWithRoles);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult UserDetails(string userId)
         {
 
@@ -275,6 +291,7 @@ namespace Rentalis_v2.Controllers
             return View(userDetails);
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult UpdateUserRole(/*string userId, string roleId*/AdminUserDetailsViewModel userDetails)
         {
 
@@ -298,6 +315,7 @@ namespace Rentalis_v2.Controllers
 
         }
 
+        [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult AddUser()
         {
             return View();

@@ -307,6 +307,18 @@
     <Compile Include="Migrations\201801241204037_Add_Price_to_service.Designer.cs">
       <DependentUpon>201801241204037_Add_Price_to_service.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801242023521_AddedPaymentMethodToBookingModels.cs" />
+    <Compile Include="Migrations\201801242023521_AddedPaymentMethodToBookingModels.Designer.cs">
+      <DependentUpon>201801242023521_AddedPaymentMethodToBookingModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801242125389_AddedStatus.cs" />
+    <Compile Include="Migrations\201801242125389_AddedStatus.Designer.cs">
+      <DependentUpon>201801242125389_AddedStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801242147124_AddedPlateNumber.cs" />
+    <Compile Include="Migrations\201801242147124_AddedPlateNumber.Designer.cs">
+      <DependentUpon>201801242147124_AddedPlateNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserDetailsViewModel.cs" />
@@ -1374,6 +1386,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801241204037_Add_Price_to_service.resx">
       <DependentUpon>201801241204037_Add_Price_to_service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801242023521_AddedPaymentMethodToBookingModels.resx">
+      <DependentUpon>201801242023521_AddedPaymentMethodToBookingModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801242125389_AddedStatus.resx">
+      <DependentUpon>201801242125389_AddedStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801242147124_AddedPlateNumber.resx">
+      <DependentUpon>201801242147124_AddedPlateNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

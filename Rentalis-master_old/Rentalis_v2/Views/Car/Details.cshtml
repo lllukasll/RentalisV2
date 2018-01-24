@@ -4,150 +4,228 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+    ul > li{margin-right:25px;font-weight:lighter;cursor:pointer}
+    li.active{border-bottom:3px solid silver;}
+
+    .item-photo{display:flex;justify-content:center;align-items:center;border-right:1px solid #f6f6f6;}
+    .menu-items{list-style-type:none;font-size:11px;display:inline-flex;margin-bottom:0;margin-top:20px}
+    .btn-success{width:100%;border-radius:0;}
+    .section{width:100%;margin-left:-15px;padding:2px;padding-left:15px;padding-right:15px;background:#f8f9f9}
+    .title-price{margin-top:30px;margin-bottom:0;color:black}
+    .title-attr{margin-top:0;margin-bottom:0;color:black;}
+    .btn-minus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-right:0;}
+    .btn-plus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-left:0;}
+    div.section > div {width:100%;display:inline-flex;}
+    div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
+    .attr,.attr2{cursor:pointer;margin-right:5px;height:20px;font-size:10px;padding:2px;border:1px solid gray;border-radius:2px;}
+    .attr3 {
+        cursor: pointer;
+        margin-right: 5px;
+        height: 20px;
+        font-size: 10px;
+        padding: 2px;
+    }
+    .attr.active,.attr2.active{ border:1px solid orange;}
+
+</style>
+
+
 <div class="top-margin gtco-container">
-    <h2>Car Details</h2>
-    <dl class="dl-horizontal">
-
-        <dt>
-            Zdjęcie
-        </dt>
-        <dd>
-            <img src="/Admin/RetrieveImage/@Model.car.Id" alt="" height=100 width=200 />
-        </dd>
-        <dt>
-            Nazwa
-        </dt>
-        <dd>
-            <b>@Html.DisplayFor(model => model.car.Name)</b>
-        </dd>
-
-        <dt>
-            Rok produkcji
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.car.ProductionYear)
-        </dd>
-        <dt>
-            Opis
-        </dt>
-        <dd>
-            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.car.Description))
-        </dd>
-
-        <dt>Abs</dt>
-        <dd>@Html.DisplayFor(model => model.car.Abs)</dd>
-        <dt>PowerSteering</dt>
-        <dd>@Html.DisplayFor(model => model.car.PowerSteering)</dd>
-        <dt>AirConditioning</dt>
-        <dd>@Html.DisplayFor(model => model.car.AirConditioning)</dd>
-        <dt>CentralLocking</dt>
-        <dd>@Html.DisplayFor(model => model.car.CentralLocking)</dd>
-        <dt>AirBags</dt>
-        <dd>@Html.DisplayFor(model => model.car.AirBags)</dd>
-
-        <dt>Doors</dt>
-        <dd>@Html.DisplayFor(model => model.car.Doors)</dd>
-        <dt>Seets</dt>
-        <dd>@Html.DisplayFor(model => model.car.Seets)</dd>
-        <dt>FuelType</dt>
-        <dd>
-            @if (Model.car.FuelType == 0)
-            {
-                <p>Benzyna</p>
-            }
-            else if (Model.car.FuelType == 1)
-            {
-                <p>Diesel</p>
-            }
-            else if (Model.car.FuelType == 2)
-            {
-                <p>Benzyna + LPG </p>
-            }
-        </dd>
-        <dt>Type</dt>
-        <dd>
-            @if (Model.car.Type == 0)
-            {
-                <p>Sedan</p>
-            }
-            else if (Model.car.Type == 1)
-            {
-                <p>Hatch-back</p>
-            }
-            else if (Model.car.Type == 2)
-            {
-                <p>Kombi </p>
-            }
-            else if (Model.car.Type == 3)
-            {
-                <p>Pick-up </p>
-            }
-            else if (Model.car.Type == 4)
-            {
-                <p>Kabriolet </p>
-            }
-            else if (Model.car.Type == 5)
-            {
-                <p>Minivan </p>
-            }
-            else if (Model.car.Type == 6)
-            {
-                <p>Limuzyna </p>
-            }
-        </dd>
-        <dt>GearBox</dt>
-        <dd>
-            @if (Model.car.GearBox == 0)
-            {
-                <p>Manualna</p>
-            }
-            else if (Model.car.GearBox == 1)
-            {
-                <p>Automatyczna</p>
-            }
-        </dd>
+    
+@* ----------- test ---------------- *@
         
-        @*@{
-            DateTime df = Request["dateFrom"];
-            DateTime dt = Request["dateTo"];
-
-            string dT = dt.ToString("yyyyMMddhhmmss");
-            string dF = df.ToString("yyyyMMddhhmmss");
-
-            <h1>Date From : @dF | Date To : @dT</h1>
-        }*@
+<div class="row">
+    <div class="col-xs-5 item-photo">
+        @*<img style="max-width:100%;" src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />*@
+        <img src="/Admin/RetrieveImage/@Model.car.Id" alt="" style="max-width:100%; margin-top: auto"/>
+    </div>
+    <div class="col-xs-7" style="border:0px solid gray">
+        <!-- Datos del vendedor y titulo del producto -->
+        <h3>@Html.DisplayFor(model => model.car.ShortDescription)</h3>    
+        <h5 style="color:#337ab7">marki @Html.DisplayFor(model => model.car.Name)</h5>
         
-        @if (Model.IsAvailible == 2)
-        {
-            <h1>Samochód jest dostępny w wybranym terminie @Html.ActionLink("Wypożycz","Rent",new {id=@Model.car.Id, DateFrom=@Model.DateFromDT, DateTo=@Model.DateToDT}, new {@class="btn btn-success"})</h1>
-            @*using (Html.BeginForm("Rent", "Car", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <input type="datetime-local" value="@Model.DateFromDT" name="dateFrom" />
-                <input type="datetime-local" value="@Model.DateToDT" name="dateTo" />
-                <input type="submit" value="Wypożycz" class="btn btn-primary">
-            }*@
-        }
+        <!-- Precios -->
+        <h6 class="title-price"><small>Cena za 24H</small></h6>
+        <h3 style="margin-top:0px;">PLN @Html.DisplayFor(model => model.car.PricePerDay)</h3>
         
-        @if (Model.IsAvailible == 1)
-        {
-            <h1>Samochód nie jest dostępny w wybranym terminie</h1>
-        }
-
-        <form action="#" method="post">
-            <div>
-                <label for="from">Sprawdź dostępność:</label>
-                <input id="from" type="datetime-local" name="dateFrom" required>
-
-                <label for="to">Do:</label>
-                <input id="to" type="datetime-local" name="dateTo" required>
-                <input type="submit" value="Sprawdź dostępność" class="btn btn-primary">
-            </div>
-        </form>
-
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-11">
-                @Html.ActionLink("Wróć", "Cars","Home", null, new { @class = "btn btn-primary" })
-            </div>
+        <!-- Detalles especificos del producto -->
+        <div class="section">
+            <h6 class="title-attr" style="margin-top:15px;" >Rok produkcji : <small>@Html.DisplayFor(model => model.car.ProductionYear)</small></h6>                    
         </div>
-    </dl>
+        <div class="section" style="padding-bottom:5px;">
+            <h6 class="title-attr">Skrzynia biegów : @if (Model.car.GearBox == 0)
+                                                     {
+                                                         <small>Manualna</small>
+                                                     }
+                                                     else if (Model.car.GearBox == 1)
+                                                     {
+                                                         <small>Automatyczna</small>
+                                                     }</h6>                    
+        </div>  
+        <div class="section" style="padding-bottom:5px;">
+            <h6 class="title-attr">Paliwo :  @if (Model.car.FuelType == 0)
+                                             {
+                                                 <small>Benzyna</small>
+                                             }
+                                             else if (Model.car.FuelType == 1)
+                                             {
+                                                 <small>Diesel</small>
+                                             }
+                                             else if (Model.car.FuelType == 2)
+                                             {
+                                                 <small>Benzyna + LPG </small>
+                                             }</h6>                    
+        </div>  
+        <div class="section" style="padding-bottom:20px;">
+            <h6 class="title-attr">Data (od-do)</h6>                    
+            <div>
+                @if (Model.IsAvailible == 2)
+                {
+                    <h5>Samochód jest dostępny w wybranym terminie @Html.ActionLink("Wypożycz", "Rent", new {id = @Model.car.Id, DateFrom = @Model.DateFromDT, DateTo = @Model.DateToDT}, new {@class = "btn btn-success"})</h5>
+                    @*<h6 class="title-attr">@Html.ActionLink("Zmień datę", "Details", new { id = @Model.car.Id },null)</h6>*@
+                }
+                else if (Model.IsAvailible == 1)
+                {
+                    <div style="display: block; width: 100%"><h5 style="color: red">Samochód nie jest dostępny w wybranym terminie @Html.ActionLink("Zmień datę", "Details", new { id = @Model.car.Id }, new { @class = "btn btn-success" })</h5></div><br>
+                    
+                }
+                else
+                {
+                    <form action="#" method="post">
+                        <div>
+                            <small>Od : <input id="from" type="datetime-local" name="dateFrom" placeholder="OD" required></small>
+                            <small>Do : <input id="to" type="datetime-local" name="dateTo" required></small>
+                            @*<input type="submit" value="Sprawdź dostępność" class="btn btn-primary">*@
+                            <div class="section" style="padding-bottom: 20px;  width: 100%;">
+                                <input type="submit" value="Sprawdź dostępność" class="btn btn-success" style="margin-right: 20px;  width: 100%;">
+                                <h6><a href="~/Home/Cars"><span class="glyphicon glyphicon-heart-empty" style="cursor: pointer;"></span> Wróć do listy samochodów</a></h6>
+                            </div>
+                        </div>
+                    </form>
+                }
+
+                @*<form action="#" method="post">
+                    <div>
+                        <small><input id="from" type="datetime-local" name="dateFrom" placeholder="OD" required></small>
+                        <small><input id="to" type="datetime-local" name="dateTo" required></small>
+                        <div class="section" style="padding-bottom: 20px;">
+                            <input type="submit" value="Sprawdź dostępność" class="btn btn-success" style="margin-right: 20px">
+                            <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor: pointer;"></span> Wróć do listy samochodów</a></h6>
+                        </div>
+                    </div>
+                </form>*@
+
+            </div>
+        </div>                
+    </div>           
+
+    <div class="col-xs-12">
+        <ul class="menu-items">
+            <li class="active">Opis</li>
+        </ul>
+        <div style="width:100%;border-top:1px solid silver">
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.car.Description))
+        </div>
+    </div>		
+    
+    <div class="col-xs-12">
+        <ul class="menu-items">
+            <li class="active">Wyposażenie</li>
+        </ul>
+        <div style="width:100%;border-top:1px solid silver">
+        </div>
+    </div>	
+    
+        <div class="col-xs-6">
+                <p>Abs @Html.DisplayFor(model => model.car.Abs)</p>
+                <p>Wspomaganie @Html.DisplayFor(model => model.car.PowerSteering)</p>
+                <p>Klimatyzacja @Html.DisplayFor(model => model.car.AirConditioning)</p>
+                <p>Centralny zamek @Html.DisplayFor(model => model.car.CentralLocking)</p>
+                <p>Poduszki powietrzne @Html.DisplayFor(model => model.car.AirBags)</p>
+            </div>
+    <div class="col-xs-6">
+        @*===Drzwi===*@
+        @if (Model.car.Doors == 0)
+        {
+            <p>Drzwi : 3</p>
+        }
+        else if (Model.car.Doors == 1)
+        {
+            <p>Drzwi : 5</p>
+        }
+
+        @*===Siedzenia===*@
+        @if (Model.car.Seets == 0)
+        {
+            <p>Siedzenia : 2</p>
+        }
+        else if (Model.car.Seets == 1)
+        {
+            <p>Siedzenia : 5</p>
+        }
+        else if (Model.car.Seets == 1)
+        {
+            <p>Siedzenia : 7</p>
+        }
+
+        @*===Typ Paliwa===*@
+        @if (Model.car.FuelType == 0)
+        {
+            <p>Typ Paliwa : Benzyna</p>
+        }
+        else if (Model.car.FuelType == 1)
+        {
+            <p>Typ Paliwa : Diesel</p>
+        }
+        else if (Model.car.FuelType == 2)
+        {
+            <p>Typ Paliwa : Benzyna + LPG </p>
+        }
+
+        @*===Typ===*@
+        @if (Model.car.Type == 0)
+        {
+            <p>Typ : Sedan</p>
+        }
+        else if (Model.car.Type == 1)
+        {
+            <p>Typ : Hatch-back</p>
+        }
+        else if (Model.car.Type == 2)
+        {
+            <p>Typ : Kombi </p>
+        }
+        else if (Model.car.Type == 3)
+        {
+            <p>Typ : Pick-up </p>
+        }
+        else if (Model.car.Type == 4)
+        {
+            <p>Typ : Kabriolet </p>
+        }
+        else if (Model.car.Type == 5)
+        {
+            <p>Typ : Minivan </p>
+        }
+        else if (Model.car.Type == 6)
+        {
+            <p>Typ : Limuzyna </p>
+        }
+
+        @*===Skrzynia biegów===*@
+        @if (Model.car.GearBox == 0)
+        {
+            <p>Skrzynia biegów : Manualna</p>
+        }
+        else if (Model.car.GearBox == 1)
+        {
+            <p>Skrzynia biegów : Automatyczna</p>
+        }
+    </div>
+    
+    
 </div>
+        
+@* --------------------------------- *@
