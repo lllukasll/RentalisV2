@@ -97,6 +97,7 @@ namespace Rentalis_v2.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Rent(int id,DateTime DateFrom, DateTime DateTo)
         {
             var car = _context.carModels.SingleOrDefault(c => c.Id == id);
@@ -119,6 +120,7 @@ namespace Rentalis_v2.Controllers
             return View(carRentViewModel);
         }
 
+        [Authorize]
         public ActionResult
             ConfirmRent( /*int id, DateTime DateFrom, DateTime DateTo, double TotalPrice, string userId, int paymentMethod*/
                 CarRentViewModels rentModel)
@@ -135,7 +137,7 @@ namespace Rentalis_v2.Controllers
 
             if (rentModel.ChoosenPaymentMethod == 1)
             {
-                string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},2,1)", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
+                string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},5,1)", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
                 //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
                 MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
                 try
@@ -183,6 +185,7 @@ namespace Rentalis_v2.Controllers
         
         }
 
+        [Authorize]
         public ActionResult CorrectlyRented()
         {
             return View();

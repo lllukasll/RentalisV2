@@ -24,6 +24,8 @@ namespace Rentalis_v2.Models
 
         [Required(ErrorMessage = "Pole Rok Produkcji nie może być puste")]
         public string ProductionYear { get; set; }
+
+        public string PlateNumber { get; set; }
         
         public byte[] Image { get; set; }
         
