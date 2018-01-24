@@ -1,6 +1,7 @@
 ﻿using Rentalis_v2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -16,9 +17,42 @@ namespace Rentalis_v2.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        public ActionResult Index()
+        public ActionResult Index(/*string sortOrder, string currentFilter, int? page*/)
         {
-            return View();
+
+            //ViewBag.CurrentSort = sortOrder;
+            //ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            //var services = from p in _context.carServices
+            //               select p;
+            //services.Include(e => e.CarModel);
+            //services = services.OrderBy(p => p.CarModel.Name);
+            var services = _context.carServices
+                .Include(a => a.CarModel);
+            //switch (sortOrder)
+            //{
+            //    case "title_desc":
+            //        services = services.OrderByDescending(p => p.serviceName);
+            //        break;
+            //    case "Date":
+            //        services = services.OrderBy(p => p.CarModel.Name);
+            //        break;
+            //    case "date_desc":
+            //        services= services.OrderByDescending(p => p.CarModel.Name);
+            //        break;
+            //    default:
+            //        services = services.OrderBy(p => p.serviceName);
+            //        break;
+
+            //}
+            //int pageSize = 5;
+            //int pageNumber = (page ?? 1);
+            //return View(services.ToPagedList(pageNumber, pageSize));
+
+            return View(services);
+
+          
         }
 
         // GET: Service/Details/5
@@ -57,11 +91,12 @@ namespace Rentalis_v2.Controllers
                 serviceName = viewModel.serviceName,
                 Description = viewModel.Description,
                 FromDateTime = viewModel.FromDateTime,
-                ToDateTime = viewModel.ToDateTime
+                ToDateTime = viewModel.ToDateTime,
+                CarModel = car
             };
             _context.carServices.Add(service);
             _context.SaveChanges();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "Service");
         }
         
 
@@ -69,6 +104,7 @@ namespace Rentalis_v2.Controllers
         // GET: Service/Edit/5
         public ActionResult Edit(int id)
         {
+
             return View();
         }
 

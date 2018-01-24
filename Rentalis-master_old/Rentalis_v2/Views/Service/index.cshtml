@@ -1,8 +1,79 @@
-﻿@model Rentalis_v2.Models.CarService
+﻿@model IEnumerable<Rentalis_v2.Models.CarService>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 <div class="row" style="margin-left:20px; margin-right:20px;">
-    <h1>Fajna nazwa</h1>
+    <div class="col-md-12">
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>
+                    Nazwa Samochodu
+                </th>
+                <th>
+                    Nazwa Serwisu
+                </th>
+                <th>
+                    Opis Naprawy
+                </th>
+
+                <th>
+                    Data oddania Auta do naprawy
+                </th>
+
+
+                <th>
+                    Data odebrania Auta od naprawy
+                </th>
+
+                @*<th>
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel.Name)
+        </th>
+        <th>
+            @Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        <th>*@
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+             {
+            <tr>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarModel.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.serviceName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromDateTime)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToDateTime)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.PostID }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Read More", "Details", new { id = item.PostID }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "btn btn-danger" })*@
+                </td>
+            </tr>
+                }
+
+        </table>
+    </div>
 </div>
