@@ -119,43 +119,68 @@ namespace Rentalis_v2.Controllers
             return View(carRentViewModel);
         }
 
-        public ActionResult ConfirmRent(/*int id, DateTime DateFrom, DateTime DateTo, double TotalPrice, string userId, int paymentMethod*/CarRentViewModels rentModel)
+        public ActionResult
+            ConfirmRent( /*int id, DateTime DateFrom, DateTime DateTo, double TotalPrice, string userId, int paymentMethod*/
+                CarRentViewModels rentModel)
         {
             //string dT = rentModel.dateTo.ToString("yyyyddMMHHmmss");
             //string dF = rentModel.dateFrom.ToString("yyyyddMMHHmmss");
 
-            string dT = rentModel.YearTo + rentModel.MonthTo.PadLeft(2,'0') + rentModel.DayTo.PadLeft(2, '0') + rentModel.HourTo.PadLeft(2, '0') + rentModel.MinuteTo.PadLeft(2, '0') +
+            string dT = rentModel.YearTo + rentModel.MonthTo.PadLeft(2, '0') + rentModel.DayTo.PadLeft(2, '0') +
+                        rentModel.HourTo.PadLeft(2, '0') + rentModel.MinuteTo.PadLeft(2, '0') +
                         rentModel.SecundTo.PadLeft(2, '0');
-            string dF = rentModel.YearFrom + rentModel.MonthFrom.PadLeft(2, '0') + rentModel.DayFrom.PadLeft(2, '0') + rentModel.HourFrom.PadLeft(2, '0') + rentModel.MinuteFrom.PadLeft(2, '0') +
+            string dF = rentModel.YearFrom + rentModel.MonthFrom.PadLeft(2, '0') + rentModel.DayFrom.PadLeft(2, '0') +
+                        rentModel.HourFrom.PadLeft(2, '0') + rentModel.MinuteFrom.PadLeft(2, '0') +
                         rentModel.SecundFrom.PadLeft(2, '0');
 
             if (rentModel.ChoosenPaymentMethod == 1)
             {
-                
-            }else if (rentModel.ChoosenPaymentMethod == 2)
-            {
-                
-            }
-
-            string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},1)", rentModel.car.Id, rentModel.userId, dF,dT, rentModel.TotalPrice);
-            //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
-            MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
-            try
-            {
-                using (MySqlCommand cmdDatabase = new MySqlCommand(query, conn))
+                string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},2,1)", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
+                //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
+                MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
+                try
                 {
-                    conn.Open();
-                    cmdDatabase.ExecuteNonQuery();
+                    using (MySqlCommand cmdDatabase = new MySqlCommand(query, conn))
+                    {
+                        conn.Open();
+                        cmdDatabase.ExecuteNonQuery();
 
-                    return View("CorrectlyRented");
+                        return View("CorrectlyRented", rentModel);
+                    }
+                }
+                catch
+                {
+                    return HttpNotFound();
+
                 }
             }
-            catch 
+            else if (rentModel.ChoosenPaymentMethod == 2)
+            {
+                string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},1,2)", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
+                //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
+                MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
+                try
+                {
+                    using (MySqlCommand cmdDatabase = new MySqlCommand(query, conn))
+                    {
+                        conn.Open();
+                        cmdDatabase.ExecuteNonQuery();
+
+                        return View("CorrectlyRented", rentModel);
+                    }
+                }
+                catch
+                {
+                    return HttpNotFound();
+
+                }
+            }
+            else
             {
                 return HttpNotFound();
-
             }
 
+        
         }
 
         public ActionResult CorrectlyRented()

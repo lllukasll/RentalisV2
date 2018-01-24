@@ -23,7 +23,6 @@
             {
                 @Html.HiddenFor(o => o.userId, new {Value = @User.Identity.GetUserId() } );
                 @Html.HiddenFor(o => o.days, new {Value = @Model.days})
-                @*@Html.HiddenFor(o => o.dateFrom, new { Value = new DateTime(@Model.dateFrom.Year,@Model.dateFrom.Month,@Model.dateFrom.Day, @Model.dateFrom.Hour,@Model.dateFrom.Minute,@Model.dateFrom.Second) });*@
                 
                 @Html.HiddenFor(o => o.YearFrom, new {Value = @Model.dateFrom.Year})
                 @Html.HiddenFor(o => o.MonthFrom, new {Value = @Model.dateFrom.Month})
@@ -39,7 +38,6 @@
                 @Html.HiddenFor(o => o.MinuteTo, new {Value = @Model.dateTo.Minute})
                 @Html.HiddenFor(o => o.SecundTo, new {Value = @Model.dateTo.Second})
 
-                @*@Html.HiddenFor(o => o.dateTo, new { Value = @Model.dateTo });*@
                 @Html.HiddenFor(o => o.TotalPrice, new { Value = @Model.TotalPrice });
                 @Html.HiddenFor(o => o.car.Id, new { Value = @Model.car.Id });
                 <h3>Płatność : @Html.DropDownListFor(o => o.ChoosenPaymentMethod, new SelectList(@Model.PaymentMethod, "Value", "Text"))</h3>
