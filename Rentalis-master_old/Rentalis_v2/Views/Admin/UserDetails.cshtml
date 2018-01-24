@@ -3,17 +3,38 @@
     ViewBag.Title = "UserDetails";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">My Dashboard</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+@*<h2>UserDetails</h2>*@
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Login : @Model.userName</h3>
+                <h3>Email : @Model.email</h3>
+                <h3>
+                    @using (Html.BeginForm("UpdateUserRole", "Admin", FormMethod.Post))
+                    {
+                        @Html.HiddenFor(o => o.userId);
 
-<h2>UserDetails</h2>
+                        @Html.DropDownListFor(o => o.RoleId, new SelectList(@Model.RoleList, "Value", "Text"))
+                        <input type="submit" value="Submit" />
+                    }
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h3>Login : @Model.userName</h3>
-<h3>Email : @Model.email</h3>
-<h3>
-    @using (Html.BeginForm("UpdateUserRole", "Admin", FormMethod.Post))
-    {
-        @Html.HiddenFor(o => o.userId);
-
-        @Html.DropDownListFor(o => o.RoleId, new SelectList(@Model.RoleList, "Value", "Text"))
-        <input type="submit" value="Submit" />
-    }
-</h3>

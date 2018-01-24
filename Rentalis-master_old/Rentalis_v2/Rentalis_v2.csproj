@@ -366,6 +366,7 @@
     <Content Include="Content\img\iphone.png" />
     <Content Include="Content\img\loader.gif" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\js\mojSkrypt.js" />
     <Content Include="Content\js\theme\bootstrap.min.js" />
     <Content Include="Content\js\theme\google_map.js" />
     <Content Include="Content\js\theme\jquery.countTo.js" />

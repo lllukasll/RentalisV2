@@ -39,7 +39,7 @@
                         @Html.DisplayFor(modelItem => item.ShortDescription)
                     </td>
                     <td>
-                        <button class="btn btn-primary">Wypozycz</button>
+                        @Html.ActionLink("Szczegóły", "Details", "Car", new { id = item.Id }, new { @class = "btn btn-primary" })
                     </td>
                 </tr>
             }

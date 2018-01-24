@@ -153,7 +153,7 @@ namespace Rentalis_v2.Controllers
             service.CarModel.Id = viewModel.Car;
 
 
-            _context.carServices.Add(service);
+            //_context.carServices.Add(service);
             _context.SaveChanges();
             return RedirectToAction("Index", "Service");
         }

@@ -12,7 +12,7 @@
     <div class="col-md-12">
         <h2>Edit</h2>
         <hr />
-        @using (Html.BeginForm("Edit", "Service"))
+        @using (Html.BeginForm("Update", "Service"))
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor(m => m.Id);
