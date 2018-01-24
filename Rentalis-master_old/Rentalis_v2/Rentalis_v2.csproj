@@ -1158,6 +1158,11 @@
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\jquery-easing\jquery.easing.min.js" />
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\jquery\jquery.js" />
     <Content Include="Content\startbootstrap-sb-admin-gh-pages\startbootstrap-sb-admin-gh-pages\vendor\jquery\jquery.min.js" />
+    <Content Include="Views\Service\Create.cshtml" />
+    <Content Include="Views\Service\DeleteService.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
+    <Content Include="Views\Service\index.cshtml" />
+    <Content Include="Views\Service\ServiceDetails.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1282,11 +1287,6 @@
     <Content Include="Views\Admin\Bookings.cshtml" />
     <Content Include="Views\Admin\BokkingDetails.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
-    <Content Include="Views\Service\Create.cshtml" />
-    <Content Include="Views\Service\DeleteService.cshtml" />
-    <Content Include="Views\Service\EditService.cshtml" />
-    <Content Include="Views\Service\index.cshtml" />
-    <Content Include="Views\Service\ServiceDetails.cshtml" />
     <Content Include="Views\Admin\UserDetails.cshtml" />
     <Content Include="Views\Admin\AddUser.cshtml" />
   </ItemGroup>

@@ -395,6 +395,7 @@ h1, h2, h3, h4, h5, h6, figure {
   display: table;
   width: 100%;
 }
+
 @media screen and (max-width: 768px) {
   .gtco-cover .display-t,
   .gtco-cover .display-tc {
@@ -1758,3 +1759,6 @@ form label {
     margin-top: 100px;
 }
 /*# sourceMappingURL=style.css.map */
+.form-control{
+    padding:10px !important;
+}
