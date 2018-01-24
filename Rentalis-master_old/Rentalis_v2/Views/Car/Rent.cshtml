@@ -5,14 +5,45 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top-margin gtco-container">
-    <h2>Rent</h2>
-    <h3>Car name : @Model.car.Name</h3>
-    <h3>Car id : @Model.car.Id</h3>
-    <h3>Data od : @Model.dateFrom</h3>
-    <h3>Data do : @Model.dateTo</h3>
-    <h3>Days : @Model.days</h3>
-    <h3>Total Price : @Model.TotalPrice</h3>
-    <h3>UserId : @User.Identity.GetUserId()</h3>
-    @Html.ActionLink("Wypożycz","ConfirmRent","Car",new {id= @Model.car.Id , DateFrom=@Model.dateFrom, DateTo = @Model.dateTo, TotalPrice = @Model.TotalPrice, userId = @User.Identity.GetUserId() },new {@class="btn btn-success"})
+    
+    
+    <div class="col-xs-12">
+        <h2>Szczegóły rezerwacji</h2>
+        <div style="width: 100%; border-top: 1px solid silver">
+            <h3>Samochód : <a href="/Car/Details/@Model.car.Id">@Model.car.ShortDescription</a></h3>
+            <h3>Data wypożyczenia od : @Model.dateFrom do : @Model.dateTo <a href="/Car/Details/@Model.car.Id">Zmień datę</a></h3>
+            <h3>Dni wypożyczenia : @Model.days</h3>
+            <h3>Cena całkowita : @Model.TotalPrice</h3>
+            <h3>UserId : @User.Identity.GetUserId()</h3>
+            @*@Html.DropDownListFor(o => o.ChoosenPaymentMethod, new SelectList(@Model.PaymentMethod, "Value", "Text"))*@
+            @*@Html.ActionLink("Wypożycz", "ConfirmRent", "Car", new {id = @Model.car.Id, DateFrom = @Model.dateFrom, DateTo = @Model.dateTo, TotalPrice = @Model.TotalPrice, userId = @User.Identity.GetUserId(), paymentMethod = @Model.ChoosenPaymentMethod}, new {@class = "btn btn-success"})*@
+            
+
+            @using (Html.BeginForm("ConfirmRent", "Car", FormMethod.Post))
+            {
+                @Html.HiddenFor(o => o.userId, new {Value = @User.Identity.GetUserId() } );
+                @Html.HiddenFor(o => o.days, new {Value = @Model.days})
+                
+                @Html.HiddenFor(o => o.YearFrom, new {Value = @Model.dateFrom.Year})
+                @Html.HiddenFor(o => o.MonthFrom, new {Value = @Model.dateFrom.Month})
+                @Html.HiddenFor(o => o.DayFrom, new {Value = @Model.dateFrom.Day})
+                @Html.HiddenFor(o => o.HourFrom, new {Value = @Model.dateFrom.Hour})
+                @Html.HiddenFor(o => o.MinuteFrom, new {Value = @Model.dateFrom.Minute})
+                @Html.HiddenFor(o => o.SecundFrom, new {Value = @Model.dateFrom.Second})
+
+                @Html.HiddenFor(o => o.YearTo, new {Value = @Model.dateTo.Year})
+                @Html.HiddenFor(o => o.MonthTo, new {Value = @Model.dateTo.Month})
+                @Html.HiddenFor(o => o.DayTo, new {Value = @Model.dateTo.Day})
+                @Html.HiddenFor(o => o.HourTo, new {Value = @Model.dateTo.Hour})
+                @Html.HiddenFor(o => o.MinuteTo, new {Value = @Model.dateTo.Minute})
+                @Html.HiddenFor(o => o.SecundTo, new {Value = @Model.dateTo.Second})
+
+                @Html.HiddenFor(o => o.TotalPrice, new { Value = @Model.TotalPrice });
+                @Html.HiddenFor(o => o.car.Id, new { Value = @Model.car.Id });
+                <h3>Płatność : @Html.DropDownListFor(o => o.ChoosenPaymentMethod, new SelectList(@Model.PaymentMethod, "Value", "Text"))</h3>
+                <input type="submit" value="Submit" />
+            }
+        </div>
+    </div>	
 </div>
 

@@ -1,9 +1,24 @@
-﻿
+﻿@model Rentalis_v2.Models.CarRentViewModels
 @{
     ViewBag.Title = "CorrectlyRented";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top-margin gtco-container">
+    
     <h2>Pomyślnie zarezerwowano samochód</h2>
     <h3>Szczegóły rezerwacji możesz zobaczyć w swoim profilu</h3>
+
+    @if (@Model.ChoosenPaymentMethod == 1)
+    {
+        <h3>Wybrałeś Płatność przy odbiorze</h3>
+        <h3>Dziękujemy :)</h3>
+        <h3>Twój samochód będzie na ciebie czekał</h3>
+    }
+    else if (@Model.ChoosenPaymentMethod == 2)
+    {
+        <h3>Wybrałeś Płatność Online</h3>
+        <h3>Numer konta do przelewu : <b>44 1234 1234 1234 1234 1234</b></h3>
+        <h3>Tytuł przelewu : <b>asdasdas</b></h3>
+    }
+
 </div>

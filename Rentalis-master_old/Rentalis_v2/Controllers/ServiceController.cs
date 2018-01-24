@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Rentalis_v2.Controllers
 {
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class ServiceController : Controller
     {
         private ApplicationDbContext _context;
