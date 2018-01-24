@@ -85,6 +85,11 @@ namespace Rentalis_v2.Controllers
         [HttpPost]
         public ActionResult Create(ServiceCarViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.cars = _context.carModels.ToList();
+                return View("Create",viewModel);
+            }
             var car = _context.carModels.Single(c => c.Id == viewModel.Car);
             var service = new CarService
             {
@@ -105,30 +110,53 @@ namespace Rentalis_v2.Controllers
         // GET: Service/Edit/5
         public ActionResult Edit(int id)
         {
+            var service = _context.carServices
+                .Single(g => g.Id == id);
+                
 
-            return View();
+            var viewModel = new ServiceCarViewModel
+            {
+               
+                cars = _context.carModels.ToList(),
+                Id = service.Id,
+                serviceName = service.serviceName,
+                Description = service.Description,
+                FromDateTime = service.FromDateTime,
+                ToDateTime = service.FromDateTime,
+                Price = service.Price
+
+            };
+            if (service == null)
+                return HttpNotFound();
+
+            return View(viewModel);
+           
         }
 
         // POST: Service/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id)
-        //{
-           
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-        //        //var services = _context.carServices.Single(s => s.Id == id);
-        //        //var viewModel = ServiceCarViewModel
-        //        //    {
-        //        //     = _context.carModels.ToList();
-        //        //}
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(ServiceCarViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+               return View("Create", viewModel);
+            }
+            var car = _context.carModels.Single(c => c.Id == viewModel.Car);
+            var service = _context.carServices.Single(e => e.Id == viewModel.Id);
+            service.serviceName = viewModel.serviceName;
+            service.Description = viewModel.Description;
+            service.ToDateTime = viewModel.ToDateTime;
+            service.FromDateTime = viewModel.FromDateTime;
+            service.Price = viewModel.Price;
+            service.CarModel.Id = viewModel.Car;
+
+
+            _context.carServices.Add(service);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Service");
+        }
+
 
         // GET: Service/Delete/5
         public ActionResult Delete(int id)

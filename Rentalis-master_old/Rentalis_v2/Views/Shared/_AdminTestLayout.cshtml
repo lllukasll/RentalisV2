@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Panel Administracyjny &mdash; @ViewBag.Title</title>
     <!-- Bootstrap core CSS-->
     <link href="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom fonts for this template-->
@@ -18,162 +18,164 @@
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
-<!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <ul class="navbar-nav ">
-        <li class="nav-item">
-            <a class="nav-link text-center" id="sidenavToggler">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </a>
-        </li>
-    </ul>
-    <a class="navbar-brand" href="index.html">Rentalis - Panel Administracyjny</a>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <a class="nav-link" href="~/Admin/Index">
-                    <i class="fa fa-fw fa-dashboard"></i>
-                    <span class="nav-link-text">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="~/Admin/Bookings">
-                    <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                    <span class="nav-link-text">Rezerwacje</span>
-                </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#exampleAccordion">
-                    <i class="fa fa-user-o" aria-hidden="true"></i>
-                    <span class="nav-link-text">Klienci</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseUsers">
-                    <li>
-                        <a href="~/Admin/AddUser">Dodaj Klienta</a>
-                    </li>
-                    <li>
-                        <a href="~/Admin/Users">Klienci</a>
-                    </li>
-                    <li>
-                        <a href="register.html">Pracownicy</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-                    <i class="fa fa-car" aria-hidden="true"></i>
-                    <span class="nav-link-text">Samochody</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-                    <li>
-                        <a href="~/Admin/Cars"><i class="fa fa-list" aria-hidden="true"></i> Lista</a>
-                    </li>
-                    <li>
-                        
-                        <a href="~/Admin/AddCar"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj nowy</a>
-                    </li>
-                    <li>
-                        <a href="~/Service/Create"><i class="fa fa-wrench" aria-hidden="true"></i> Serwis</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="~/Home/Index">
-                    <i class="fa fa-backward" aria-hidden="true"></i>
-                    <span class="nav-link-text">Rentalis</span>
-                </a>
-            </li>
-        </ul>
-        
-        <ul class="navbar-nav ml-auto">
-            <span class="nav-link"><i class="fa fa-user-o" aria-hidden="true"></i> @User.Identity.GetUserName()</span>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav ">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </a>
             </li>
         </ul>
-    </div>
-</nav>
-<div class="content-wrapper">
-    <div class="container-fluid">
-        <!-- Breadcrumbs-->
-        @*<ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Navbar</li>
-        </ol>
-        <h1>Navbar</h1>
-        <hr>
-        <p>The SB Admin navbar can be either fixed or static, and it supports the navbar-light and navbar-dark Bootstrap 4 classes.</p>
-        <a class="btn btn-primary" href="#" id="toggleNavPosition">Toggle Fixed/Static Navbar</a>
-        <a class="btn btn-primary" href="#" id="toggleNavColor">Toggle Navbar Color</a>*@
-        <!-- Blank div to give the page height to preview the fixed vs. static navbar-->
-        @*<div style="height: 1000px;"></div>*@
-        @RenderBody()
-    </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
-    <footer class="sticky-footer">
-        <div class="container">
-            <div class="text-center">
-                <small>Copyright © Your Website 2017</small>
+        <a class="navbar-brand" href="index.html">Rentalis - Panel Administracyjny</a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="~/Admin/Index">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                    <a class="nav-link" href="~/Admin/Bookings">
+                        <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+                        <span class="nav-link-text">Rezerwacje</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#exampleAccordion">
+                        <i class="fa fa-user-o" aria-hidden="true"></i>
+                        <span class="nav-link-text">Klienci</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseUsers">
+                        <li>
+                            <a href="~/Admin/AddUser">Dodaj Klienta</a>
+                        </li>
+                        <li>
+                            <a href="~/Admin/Users">Klienci</a>
+                        </li>
+                        <li>
+                            <a href="register.html">Pracownicy</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+                        <i class="fa fa-car" aria-hidden="true"></i>
+                        <span class="nav-link-text">Samochody</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                        <li>
+                            <a href="~/Admin/Cars"><i class="fa fa-list" aria-hidden="true"></i> Lista</a>
+                        </li>
+                        <li>
+
+                            <a href="~/Admin/AddCar"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj nowy</a>
+                        </li>
+                        <li>
+                            <a href="~/Service/Create"><i class="fa fa-wrench" aria-hidden="true"></i> Serwis</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+                    <a class="nav-link" href="~/Home/Index">
+                        <i class="fa fa-backward" aria-hidden="true"></i>
+                        <span class="nav-link-text">Rentalis</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <span class="nav-link"><i class="fa fa-user-o" aria-hidden="true"></i> @User.Identity.GetUserName()</span>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            @*<ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Navbar</li>
+                </ol>
+                <h1>Navbar</h1>
+                <hr>
+                <p>The SB Admin navbar can be either fixed or static, and it supports the navbar-light and navbar-dark Bootstrap 4 classes.</p>
+                <a class="btn btn-primary" href="#" id="toggleNavPosition">Toggle Fixed/Static Navbar</a>
+                <a class="btn btn-primary" href="#" id="toggleNavColor">Toggle Navbar Color</a>*@
+            <!-- Blank div to give the page height to preview the fixed vs. static navbar-->
+            @*<div style="height: 1000px;"></div>*@
+            @RenderBody()
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Your Website 2017</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fa fa-angle-up"></i>
-    </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
+        <!-- Custom scripts for this page-->
+        <!-- Toggle between fixed and static navbar-->
+        <script>
+            $('#toggleNavPosition').click(function () {
+                $('body').toggleClass('fixed-nav');
+                $('nav').toggleClass('fixed-top static-top');
+            });
+
+        </script>
+        <!-- Toggle between dark and light navbar-->
+        <script>
+            $('#toggleNavColor').click(function () {
+                $('nav').toggleClass('navbar-dark navbar-light');
+                $('nav').toggleClass('bg-dark bg-light');
+                $('body').toggleClass('bg-dark bg-light');
+            });
+
+        </script>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/js/sb-admin.min.js"></script>
-    <!-- Custom scripts for this page-->
-    <!-- Toggle between fixed and static navbar-->
-    <script>
-        $('#toggleNavPosition').click(function() {
-            $('body').toggleClass('fixed-nav');
-            $('nav').toggleClass('fixed-top static-top');
-        });
-
-    </script>
-    <!-- Toggle between dark and light navbar-->
-    <script>
-        $('#toggleNavColor').click(function() {
-            $('nav').toggleClass('navbar-dark navbar-light');
-            $('nav').toggleClass('bg-dark bg-light');
-            $('body').toggleClass('bg-dark bg-light');
-        });
-
-    </script>
-</div>
+    @RenderSection("scripts", required: false)
 </body>
 
 </html>
