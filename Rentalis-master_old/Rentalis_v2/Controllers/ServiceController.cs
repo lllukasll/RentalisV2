@@ -79,14 +79,7 @@ namespace Rentalis_v2.Controllers
             {
                 cars = _context.carModels.ToList()
              };
-            var CarInfo = _context.carModels
-                     .Select(x =>
-                             new {
-                                 id = x.Id,
-                                 name = x.Name + " | " + x.PlateNumber
-                             });
-
-            ViewBag.carinfo = new SelectList(CarInfo, "id", "name");
+          
             return View(viewModel);
         }
 
