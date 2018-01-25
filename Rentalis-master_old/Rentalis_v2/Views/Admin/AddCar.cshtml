@@ -26,7 +26,7 @@
         <div class="col-md-6">
             <div class="row">
                 <dt class="col-md-5">
-                    Wybierz zdjęcie :
+                    Wybierz zdjęcie 
                 </dt>
                 <dd class="col-md-7">
                     <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" class="btn btn-dark form-control"/>
@@ -51,7 +51,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Cena za 24H :
+                    Cena za 24H 
                 </dt>
                 <dd class="col-md-7">
                     @Html.TextBoxFor(model => model.PricePerDay, new {@class = "form-control"})
@@ -59,7 +59,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Rok produkcji :
+                    Rok produkcji 
                 </dt>
                 <dd class="col-md-7">
                     @Html.TextBoxFor(model => model.ProductionYear, new {@class = "form-control"})
@@ -67,7 +67,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Numer rejestracyjny :
+                    Numer rejestracyjny 
                 </dt>
                 <dd class="col-md-7">
                     @Html.TextBoxFor(model => model.PlateNumber, new {@class = "form-control"})
@@ -75,7 +75,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Krótki opis :
+                    Krótki opis 
                 </dt>
                 <dd class="col-md-7">
                     @Html.TextAreaFor(model => model.ShortDescription, new {@class = "form-control"})
@@ -89,7 +89,7 @@
             <div class="row">
                 @*<div><dt></dt><dd></dd></div>*@
                 <dt class="col-md-5">
-                    Drzwi :
+                    Drzwi
                 </dt>
                 <dd class="col-md-7">
                     @Html.DropDownListFor(model => model.Doors, new SelectList(new List<Object>
@@ -101,7 +101,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Siedzenia :
+                    Siedzenia 
                 </dt>
                 <dd class="col-md-7">
                     @Html.DropDownListFor(model => model.Seets, new SelectList(new List<Object>
@@ -114,7 +114,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Typ Paliwa :
+                    Typ Paliwa 
                 </dt>
                 <dd class="col-md-7">
                     @Html.DropDownListFor(model => model.FuelType, new SelectList(new List<Object>
@@ -127,7 +127,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Typ Samochodu :
+                    Typ Samochodu 
                 </dt>
                 <dd class="col-md-7">
                     @Html.DropDownListFor(model => model.Type, new SelectList(new List<Object>
@@ -144,7 +144,7 @@
                 </dd>
 
                 <dt class="col-md-5">
-                    Skrzynia biegów :
+                    Skrzynia biegów 
                 </dt>
                 <dd class="col-md-7">
                     @Html.DropDownListFor(model => model.GearBox, new SelectList(new List<Object>
@@ -161,7 +161,7 @@
         <div class="col-md-3">
             <div class="row">
                 <dt class="col-md-8">
-                    ABS :
+                    ABS 
                 </dt>
                 <dd class="col-md-4">
                     @Html.CheckBoxFor(model => model.Abs, new {@class = "form-control"})
@@ -169,7 +169,7 @@
                 </dd>
 
                 <dt class="col-md-8">
-                    Wspomaganie :
+                    Wspomaganie 
                 </dt>
                 <dd class="col-md-4">
                     @Html.CheckBoxFor(model => model.PowerSteering, new {@class = "form-control"})
@@ -177,7 +177,7 @@
                 </dd>
 
                 <dt class="col-md-8">
-                    Klimatyzacja :
+                    Klimatyzacja 
                 </dt>
                 <dd class="col-md-4">
                     @Html.CheckBoxFor(model => model.AirConditioning, new {@class = "form-control"})
@@ -185,7 +185,7 @@
                 </dd>
 
                 <dt class="col-md-8">
-                    Centralny zamek :
+                    Centralny zamek 
                 </dt>
                 <dd class="col-md-4">
                     @Html.CheckBoxFor(model => model.CentralLocking, new {@class = "form-control"})
@@ -193,7 +193,7 @@
                 </dd>
 
                 <dt class="col-md-8">
-                    Poduszki powietrzne :
+                    Poduszki powietrzne 
                 </dt>
                 <dd class="col-md-4">
                     @Html.CheckBoxFor(model => model.AirBags, new {@class = "form-control"})
@@ -206,7 +206,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <b>Opis : </b>
+                <b>Opis  </b>
                 @*@Html.LabelFor(model => model.Description)*@
                 @Html.TextAreaFor(model => model.Description, new {@id = "FullDescription", @class = "form-control"})
                 @Html.ValidationMessageFor(model => model.Description)
