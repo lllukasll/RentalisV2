@@ -1,92 +1,85 @@
-﻿@model PagedList.IPagedList<Rentalis_v2.Models.BookingModels>
-@using PagedList.Mvc;
+﻿@model IEnumerable<Rentalis_v2.Models.BookingModels>
 @{
     ViewBag.Title = "Bookings";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
-<div class="row"> <div class="col-md-12">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="~/Admin/">Admin</a>
-        </li>
-        <li class="breadcrumb-item active">Rezerwacje</li>
-    </ol>
 
-    <table id="tableCars" class="table table-advance table-hover">
-        <tbody>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th><input type="text" id="searchInput" onkeyup="funkcja()" placeholder="Wyszukaj..." /></th>
-            </tr>
-            <script>
-                function funkcja() {
-                    // Declare variables
-                    var input, filter, table, tr, td, i;
-                    input = document.getElementById("searchInput");
-                    filter = input.value.toUpperCase();
-                    table = document.getElementById("tableCars");
-                    tr = table.getElementsByTagName("tr");
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Admin/">Admin</a>
+    </li>
+    <li class="breadcrumb-item active">Rezerwacje</li>
+</ol>
 
-                    // Loop through all table rows, and hide those who don't match the search query
-                    for (i = 0; i < tr.length; i++) {
-                        td = tr[i].getElementsByTagName("td")[1];
-                        if (td) {
-                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                            } else {
-                                tr[i].style.display = "none";
-                            }
-                        }
+<table id="tableCars" class="table table-advance table-hover">
+    <tbody>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><input type="text" id="searchInput" onkeyup="funkcja()" placeholder="Wyszukaj..." /></th>
+    </tr>
+    <script>
+        function funkcja() {
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tableCars");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
                     }
                 }
-            </script>
-            <tr>
-                <th>CarId</th>
-                <th>UserId</th>
-                <th>DateFrom</th>
-                <th>DateTo</th>
-                <th>TotalPrice</th>
-                <th>Status</th>
-                <th></th>
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.carId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.userId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateTimeFrom)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateTimeTo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TotalPrice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderStatusId.name)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Szczegóły", "BokkingDetails", "Admin", new { id = item.Id }, new { @class = "btn btn-primary" })
-                    </td>
-
-                </tr>
             }
-        </tbody>
-    </table>
-    <br />
-    Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+        }
+    </script>
+    <tr>
+        <th>Id Samochodu</th>
+        <th>Id Użytkownika</th>
+        <th>Data Od</th>
+        <th>Data Do</th>
+        <th>Cena</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="~/Admin/CarDetails/@item.carId">@Html.DisplayFor(modelItem => item.carId)</a>
+            </td>
+            <td>
+                <a href="~/Admin/UserDetails?userId=@item.userId">@Html.DisplayFor(modelItem => item.userId)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTimeTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatusId.name)
+            </td>
+            <td>
+                @Html.ActionLink("Szczegóły", "BokkingDetails", "Admin", new {id = item.Id}, new {@class = "btn btn-primary"})
+            </td>
 
-    @Html.PagedListPager(Model, page => Url.Action("Bookings",
-         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-</div>
-</div>
+        </tr>
+    }
+    </tbody>
+</table>
+
