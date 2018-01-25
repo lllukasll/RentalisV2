@@ -2,13 +2,13 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Strona Główna";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 <div class="row" style="margin-left:20px; margin-right:20px;">
     <div class="col-md-12">
         <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" } )
+            @Html.ActionLink("Dodaj nowy Serwis", "Create", null, new { @class = "btn btn-primary" } )
         </p>
 
         <table class="table">
@@ -86,7 +86,7 @@
 
         </table>
         <br />
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
 
         @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
