@@ -78,6 +78,8 @@ namespace Rentalis_v2
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
+
+            
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {

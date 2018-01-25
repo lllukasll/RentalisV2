@@ -47,10 +47,25 @@
 <div class="sidenav">
     @Html.ActionLink("Moj profil", "Index", null, new { @class = "sidenavElement" })
     @Html.ActionLink("Rezerwacje", "Bookings", null, new { @class = "sidenavElement" })
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
 </div>
 <div class="sidenavMainPage top-margin gtco-container">
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="~/Manage/">Profil</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="section">
+<div class="container">
+<div class="row">
+<div class="col-md-12">
     <h2>@ViewBag.Title.</h2>
     <p class="text-success">@ViewBag.StatusMessage</p>
     <div>
@@ -72,11 +87,10 @@
                 }
                 ]
             </dd>
-            <dt>Logowania zewnętrzne:</dt>
-            <dd>
-                @Model.Logins.Count [
-                @Html.ActionLink("Zarządzaj", "ManageLogins") ]
-            </dd>
+            <dt>Imię :</dt> <dd>@Model.Name</dd>
+            <dt>Nazwisko :</dt> <dd>@Model.Surname</dd>
+            <dt>Adres :</dt> <dd>@Model.Adres</dd>
+            <dt>Numer prawa jazdy :</dt> <dd>@Model.CarLicenceNumber</dd>
             @*
                 Phone Numbers can used as a second factor of verification in a two-factor authentication system.
 
@@ -105,12 +119,6 @@
                     }
                 </dd>
             *@
-            <dt>Uwierzytelnianie dwuetapowe:</dt>
-            <dd>
-                <p>
-                    There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                    for details on setting up this ASP.NET application to support two-factor authentication.
-                </p>
                 @*@if (Model.TwoFactor)
                     {
                         using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -134,4 +142,8 @@
             </dd>
         </dl>
     </div>
+</div>
+</div>
+</div>
+</div>
 </div>

@@ -46,41 +46,44 @@
 <div class="sidenav">
     @Html.ActionLink("Moj profil", "Index", null, new { @class = "sidenavElement" })
     @Html.ActionLink("Rezerwacje","Bookings",null,new {@class="sidenavElement"})
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
 </div>
 <div class="sidenavMainPage top-margin gtco-container">
-    <h2>Rezerwacje</h2>
 
-    <table id="tableAnnounce" class="table table-advance table-hover">
-        <tbody>
-            <tr>
-                <th>CarID</th>
-                <th>DateFrom</th>
-                <th>DateTo</th>
-                <th>TotalPrice</th>
-                <th>Status</th>
-            </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.carId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateTimeFrom)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateTimeTo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TotalPrice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderStatusId.name)
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="~/Manage/">Profil</a>
+                        </li>
+                        <li class="breadcrumb-item active">Rezerwacje</li>
+                    </ol>
+                    <table id="tableAnnounce" class="table table-advance table-hover">
+                        <tbody>
+                        <tr>
+                            <th>Samochód</th>
+                            <th>Data Od</th>
+                            <th>Data Do</th>
+                            <th>Cena</th>
+                            <th>Status</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CarModel.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateTimeFrom)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateTimeTo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OrderStatusId.name)
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>

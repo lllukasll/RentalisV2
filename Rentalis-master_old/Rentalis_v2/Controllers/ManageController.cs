@@ -70,13 +70,22 @@ namespace Rentalis_v2.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
+            var bdUser = HttpContext.GetOwinContext().Get<ApplicationDbContext>();
+            var user = bdUser.Users.Where(x => x.Id == userId).FirstOrDefault();
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                Name = user.Name,
+                Surname = user.Surname,
+                Age = user.Age,
+                CarLicenceNumber = user.CarLicenceNumber,
+                Adres = user.Adress
             };
             return View(model);
         }
@@ -363,7 +372,7 @@ namespace Rentalis_v2.Controllers
                 throw;
             }
 
-            var bookings = _context.bookingModels.Include(c => c.OrderStatusId).ToList();
+            var bookings = _context.bookingModels.Include(c => c.OrderStatusId).Include(d => d.CarModel).ToList();
             List<BookingModels> result = bookings.Where(c => bookingIds.Any(p2 => p2 == c.Id)).ToList();
             return View(result);
         }
