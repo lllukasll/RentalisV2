@@ -4,10 +4,53 @@
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 
-@Html.ActionLink("Utwórz nowe", "AddCar", "Announcements", new { @class = "btn btn-default" })
+@*@Html.ActionLink("Utwórz nowe", "AddCar", "Announcements", new { @class = "btn btn-default" })*@
 
-<table id="tableAnnounce" class="table table-advance table-hover">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Admin">Admin</a>
+    </li>
+    <li class="breadcrumb-item">Samochody</li>
+    <li class="breadcrumb-item active">Lista</li>
+</ol>
+
+
+<table id="tableCars" class="table table-advance table-hover">
     <tbody>
+        <tr>
+            <th><div class="row">
+                <div class="col-md-12 well">
+                    <a href="~/Admin/AddCar" class="btn btn-primary" style="color: white;"><i class="fa fa-fw -square -circle fa-plus-square"></i> Dodaj samochód</a>
+                </div>
+            </div></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th><input type="text" id="searchInput" onkeyup="funkcja()" placeholder="Wyszukaj..." /></th>
+        </tr>
+        <script>
+        function funkcja() {
+            // Declare variables
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tableCars");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        </script>
     <tr>
         <th>Zdjęcie</th>
         <th> Nazwa</th>
@@ -20,7 +63,7 @@
     {
         <tr>
             <td>
-                <img src="~/Admin/RetrieveImage/@item.Id" alt="" height=100 width=200 />
+                <img src="~/Admin/RetrieveImage/@item.Id" alt="" height=100 width=200/>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

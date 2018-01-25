@@ -4,10 +4,46 @@
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 
-<h2>Rezerwacje</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Admin/">Admin</a>
+    </li>
+    <li class="breadcrumb-item active">Rezerwacje</li>
+</ol>
 
-<table id="tableAnnounce" class="table table-advance table-hover">
+<table id="tableCars" class="table table-advance table-hover">
     <tbody>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th><input type="text" id="searchInput" onkeyup="funkcja()" placeholder="Wyszukaj..." /></th>
+    </tr>
+    <script>
+        function funkcja() {
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("tableCars");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
     <tr>
         <th>CarId</th>
         <th>UserId</th>
@@ -39,9 +75,9 @@
                 @Html.DisplayFor(modelItem => item.OrderStatusId.name)
             </td>
             <td>
-                @Html.ActionLink("Szczegóły", "BokkingDetails", "Admin", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Szczegóły", "BokkingDetails", "Admin", new {id = item.Id}, new {@class = "btn btn-primary"})
             </td>
-            
+
         </tr>
     }
     </tbody>
