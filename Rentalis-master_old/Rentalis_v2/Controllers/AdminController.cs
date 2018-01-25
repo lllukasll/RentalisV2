@@ -33,7 +33,12 @@ namespace Rentalis_v2.Controllers
         [Authorize(Roles = "SuperAdmin,Admin")]
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new IndexAdminViewModel();
+            viewModel.cars = _context.carModels
+                .OrderByDescending(p => p.ProductionYear);
+            viewModel.services = _context.carServices.ToList();
+            viewModel.users = _context.Users.ToList();
+            return View(viewModel);
         }
 
         [Authorize(Roles = "SuperAdmin,Admin")]

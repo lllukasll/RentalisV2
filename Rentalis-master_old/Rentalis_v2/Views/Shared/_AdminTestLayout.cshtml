@@ -77,8 +77,9 @@
                             <a href="~/Admin/AddCar"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj nowy</a>
                         </li>
                         <li>
-                            <a href="~/Service/Create"><i class="fa fa-wrench" aria-hidden="true"></i> Serwis</a>
+                            <a href="~/Service/Index"><i class="fa fa-wrench" aria-hidden="true"></i> Serwis</a>
                         </li>
+
                     </ul>
                 </li>
 
@@ -90,13 +91,22 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav ml-auto">
-                <span class="nav-link"><i class="fa fa-user-o" aria-hidden="true"></i> @User.Identity.GetUserName()</span>
-                <li class="nav-item">
+            <ul style="list-style-type: none;" class="navbar-nav ml-auto">
+                @{ using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                   {
+            @Html.AntiForgeryToken()
+                <li>
+                <a style="text-decoration-color:white; color:white; text-decoration:none;" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-sign-out"></i>Wyloguj</a>
+                </li>
+            
+                   } }
+                @*<span class="nav-link"><i class="fa fa-user-o" aria-hidden="true"></i> @User.Identity.GetUserName()</span>
+                
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-fw fa-sign-out"></i>Logout
-                    </a>
-                </li>
+                    </a>*@
+
+                
             </ul>
         </div>
     </nav>
@@ -123,7 +133,7 @@
         <footer class="sticky-footer">
             <div class="container">
                 <div class="text-center">
-                    <small>Copyright © Your Website 2017</small>
+                    <small>Copyright © Rentalis 2017</small>
                 </div>
             </div>
         </footer>

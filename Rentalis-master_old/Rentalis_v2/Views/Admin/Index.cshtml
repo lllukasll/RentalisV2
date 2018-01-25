@@ -1,8 +1,114 @@
-﻿
+﻿@model Rentalis_v2.Models.IndexAdminViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <h1>Panel Administracyjny</h1>
+            <p class="lead">Dane do wglądu użytkownicy, samochody i serwisy</p>
+        </div>
+    </div>
+</div> <!-- end of header .row -->
+<div class="row ">
+   <div class="col-md-4">
+    <table id="tableAnnounce" class="table table-advance table-hover">
+            <tbody>
+                <tr>
+                    <th> Nazwa</th>
+                    <th> Rok produkcji</th>
+                    <th>Nr. rejestracyjny</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.cars)
+            {
+                <tr>
 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductionYear)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlateNumber)
+                    </td>
+
+                </tr>
+
+        }
+            </tbody>
+        </table>
+        <hr>
+    </div>
+    <div class="col-md-4">
+        <table id="tableAnnounce" class="table table-advance table-hover">
+            <tbody>
+                <tr>
+                    <th>Serwis</th>
+                    <th>Cena</th>
+                    <th>Od</th>
+                    <th>Do</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.services)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.serviceName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ToDateTime)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FromDateTime)
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        <table id="tableAnnounce" class="table table-advance table-hover">
+            <tbody>
+                <tr>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Wiek</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.users)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+    
