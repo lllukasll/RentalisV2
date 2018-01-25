@@ -80,11 +80,20 @@ namespace Rentalis_v2.Models
         [Compare("Password", ErrorMessage = "Hasło i jego potwierdzenie są niezgodne.")]
         public string ConfirmPassword { get; set; }
 
+        [Required(ErrorMessage = "Pole Imię nie może być puste")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Pole Nazwisko nie może być puste")]
         public string Surname { get; set; }
+
+        [Required(ErrorMessage = "Pole Wiek nie może być puste")]
         public uint Age { get; set; }
         //public int TypeofClient { get; set; }
+
+        [Required(ErrorMessage = "Pole Numer Prawa Jazdy nie może być puste")]
         public string CarLicenceNumber { get; set; }
+
+        [Required(ErrorMessage = "Pole Adres nie może być puste")]
         public string Adress { get; set; }
     }
 

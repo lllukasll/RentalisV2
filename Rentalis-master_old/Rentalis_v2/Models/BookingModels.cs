@@ -22,5 +22,7 @@ namespace Rentalis_v2.Models
         public int PaymentMethod { get; set; }
 
         public OrderStatusModel OrderStatusId { get; set; }
+
+        public CarModels CarModel { get; set; }
     }
 }

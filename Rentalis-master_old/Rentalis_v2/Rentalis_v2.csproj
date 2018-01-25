@@ -319,6 +319,14 @@
     <Compile Include="Migrations\201801242147124_AddedPlateNumber.Designer.cs">
       <DependentUpon>201801242147124_AddedPlateNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801242300165_ChangedRegistrationFieldsToRequired.cs" />
+    <Compile Include="Migrations\201801242300165_ChangedRegistrationFieldsToRequired.Designer.cs">
+      <DependentUpon>201801242300165_ChangedRegistrationFieldsToRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801250003396_AddedCarModelToBookingModels.cs" />
+    <Compile Include="Migrations\201801250003396_AddedCarModelToBookingModels.Designer.cs">
+      <DependentUpon>201801250003396_AddedCarModelToBookingModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserDetailsViewModel.cs" />
@@ -332,6 +340,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderStatusModel.cs" />
     <Compile Include="Models\ServiceCarViewModel.cs" />
+    <Compile Include="Models\UserBookingsViewModel.cs" />
     <Compile Include="Models\UsersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1396,6 +1405,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801242147124_AddedPlateNumber.resx">
       <DependentUpon>201801242147124_AddedPlateNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801242300165_ChangedRegistrationFieldsToRequired.resx">
+      <DependentUpon>201801242300165_ChangedRegistrationFieldsToRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801250003396_AddedCarModelToBookingModels.resx">
+      <DependentUpon>201801250003396_AddedCarModelToBookingModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
