@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using Rentalis_v2.Models;
 using MySql.Data.MySqlClient;
 using PagedList;
+using System.IO;
 
 namespace Rentalis_v2.Controllers
 {
@@ -19,7 +21,34 @@ namespace Rentalis_v2.Controllers
         {
             _context = new ApplicationDbContext();
         }
-
+        public byte[] GetBytesFromFile(string fullFilePath)
+        {
+            // this method is limited to 2^32 byte files (4.2 GB)
+            FileStream fs = null;
+            try
+            {
+                fs = System.IO.File.OpenRead(fullFilePath);
+                byte[] bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, Convert.ToInt32(fs.Length));
+                return bytes;
+            }
+            finally
+            {
+                if (fs != null)
+                {
+                    fs.Close();
+                    fs.Dispose();
+                }
+            }
+        }
+        public FileContentResult Help()
+        {
+          
+            string filepath = Server.MapPath("~/Content/pdf/help.pdf");
+            byte[] pdfByte = GetBytesFromFile(filepath);
+            return File(pdfByte, "application/pdf");
+            
+        }
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();

@@ -212,7 +212,7 @@ namespace Rentalis_v2.Controllers
                          select p;
 
             bookings = bookings.OrderBy(p => p.userId);
-            int pageSize = 2;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(bookings.ToPagedList(pageNumber, pageSize));
         }
@@ -269,7 +269,7 @@ namespace Rentalis_v2.Controllers
                     Email = user.Email,
                     Role = role.Name
                 }).ToList();
-            int pageSize = 2;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(usersWithRoles.ToPagedList(pageNumber, pageSize));
             
