@@ -86,7 +86,7 @@ namespace Rentalis_v2.Controllers
                                  name = x.Name + " | " + x.PlateNumber
                              });
 
-            ViewBag.carinfo = new SelectList(CarInfo, "id", "name");
+            //ViewBag.carinfo = new SelectList(CarInfo, "id", "name");
             return View(viewModel);
         }
 

@@ -211,7 +211,7 @@ namespace Rentalis_v2.Controllers
         {
             BookingDetailsViewModel booking = new BookingDetailsViewModel();
 
-            booking.bookingModel = _context.bookingModels.Include(c => c.OrderStatusId).Single(c => c.Id == id);
+            booking.bookingModel = _context.bookingModels.Include(c => c.OrderStatusId).Include(d => d.CarModel).Single(c => c.Id == id);
             var statusList = _context.orderStatusModels.ToList();
             List<SelectListItem> test = new List<SelectListItem>();
             foreach (var status in statusList)

@@ -3,24 +3,60 @@
     ViewBag.Title = "BokkingDetails";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Admin">Admin</a>
+    </li>
+    <li class="breadcrumb-item">Rezerwacje</li>
+    <li class="breadcrumb-item active">Szczegóły rezerwacji</li>
+</ol>
 
-<h2>Szczegóły rezerwacji</h2>
+<div class="jumbotron">
+    
+    <dl class="row">
+        <dt class="col-sm-2">Samochód : </dt>
+        <dd class="col-sm-10">@Model.bookingModel.CarModel.Name</dd>
 
-<h3>Id Samochodu : @Model.bookingModel.carId</h3>
-<h3>Id Użytkownika : @Model.bookingModel.userId</h3>
-<h3>Data od : @Model.bookingModel.DateTimeFrom</h3>
-<h3>Data do : @Model.bookingModel.DateTimeTo</h3>
-<h3>Cena : @Model.bookingModel.TotalPrice</h3>
-@*<h3>
-    Status :
-    @Html.DropDownListFor(o => o.bookingModel.OrderStatusId.id, new SelectList(@Model.orderStatus, "Value", "Text"))
-    @Html.ActionLink("Aktualizuj","UpdateStatus",new {orderId = @Model.bookingModel.Id, statusId = 1}, new { @class = "btn btn-primary" })
-</h3>*@
+        <dt class="col-sm-2">Id Użytkownika : </dt>
+        <dd class="col-sm-10">
+            <a href="~/Admin/UserDetails?userId=@Model.bookingModel.userId">@Model.bookingModel.userId</a>
+            @*@Html.ActionLink(@Model.bookingModel.userId, "UserDetails", "Admin", new {userId = @Model.bookingModel.userId})*@
+        </dd>
 
-@using (Html.BeginForm("UpdateStatus", "Admin", FormMethod.Post))
-{
-    @Html.HiddenFor(o => o.bookingModel.Id);
+        <dt class="col-sm-2">Data od :</dt>
+        <dd class="col-sm-10">@Model.bookingModel.DateTimeFrom</dd>
 
-    @Html.DropDownListFor(o => o.bookingModel.OrderStatusId.id, new SelectList(@Model.orderStatus, "Value", "Text"))
-    <input type="submit" value="Submit" />
-}
+        <dt class="col-sm-2">Data do :</dt>
+        <dd class="col-sm-10">@Model.bookingModel.DateTimeTo</dd>
+
+        <dt class="col-sm-2">Cena :</dt>
+        <dd class="col-sm-10">
+            @Model.bookingModel.TotalPrice PLN
+        </dd>
+        
+        <dt class="col-sm-2">Status : </dt>
+        <dd class="col-sm-10">
+            @using (Html.BeginForm("UpdateStatus", "Admin", FormMethod.Post))
+            {
+                @Html.HiddenFor(o => o.bookingModel.Id);
+
+                @Html.DropDownListFor(o => o.bookingModel.OrderStatusId.id, new SelectList(@Model.orderStatus, "Value", "Text"), new {@class= "form-control" })
+                <br /><div style="position: center; margin: auto; width: 100%"><input type="submit" value="Aktualizuj" class="btn btn-dark"/></div>
+            }
+        </dd>
+    </dl>
+
+    @*<h3>Samochodu : @Model.bookingModel.CarModel.Name</h3>
+    <h3>Id Użytkownika : @Model.bookingModel.userId</h3>
+    <h3>Data od : @Model.bookingModel.DateTimeFrom</h3>
+    <h3>Data do : @Model.bookingModel.DateTimeTo</h3>
+    <h3>Cena : @Model.bookingModel.TotalPrice</h3>*@
+    @*<h3>
+            Status :
+            @Html.DropDownListFor(o => o.bookingModel.OrderStatusId.id, new SelectList(@Model.orderStatus, "Value", "Text"))
+            @Html.ActionLink("Aktualizuj","UpdateStatus",new {orderId = @Model.bookingModel.Id, statusId = 1}, new { @class = "btn btn-primary" })
+        </h3>*@
+
+    
+    
+</div>
