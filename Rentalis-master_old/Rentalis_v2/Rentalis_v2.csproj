@@ -337,6 +337,7 @@
     <Compile Include="Models\CarRentViewModels.cs" />
     <Compile Include="Models\CarService.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IndexAdminViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OrderStatusModel.cs" />
     <Compile Include="Models\ServiceCarViewModel.cs" />
