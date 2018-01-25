@@ -11,6 +11,7 @@ using Rentalis_v2.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using MySql.Data.MySqlClient;
+using PagedList;
 
 namespace Rentalis_v2.Controllers
 {
@@ -42,11 +43,15 @@ namespace Rentalis_v2.Controllers
         }
 
         [Authorize(Roles = "SuperAdmin,Admin")]
-        public ActionResult Cars()
+        public ActionResult Cars(int? page)
         {
-            var cars = _context.carModels.ToList();
+            var cars = from p in _context.carModels
+                         select p;
 
-            return View(cars);
+            cars = cars.OrderBy(p => p.Name);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(cars.ToPagedList(pageNumber, pageSize));
         }
 
         [Authorize(Roles = "SuperAdmin,Admin")]
@@ -199,11 +204,17 @@ namespace Rentalis_v2.Controllers
         }
 
         [Authorize(Roles = "SuperAdmin,Admin")]
-        public ActionResult Bookings()
+        public ActionResult Bookings(int? page)
         {
-            var bookings = _context.bookingModels.Include(c => c.OrderStatusId).ToList();
+           
+            var bookings = from p in _context.bookingModels
+                           .Include(p=>p.OrderStatusId)
+                         select p;
 
-            return View(bookings);
+            bookings = bookings.OrderBy(p => p.userId);
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(bookings.ToPagedList(pageNumber, pageSize));
         }
 
         [Authorize(Roles = "SuperAdmin,Admin")]
@@ -243,7 +254,7 @@ namespace Rentalis_v2.Controllers
         }
 
         [Authorize(Roles = "SuperAdmin,Admin")]
-        public ActionResult Users()
+        public ActionResult Users(int? page)
         {
             //var users = _context.Users.ToList();
 
@@ -258,8 +269,10 @@ namespace Rentalis_v2.Controllers
                     Email = user.Email,
                     Role = role.Name
                 }).ToList();
-
-            return View(usersWithRoles);
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            return View(usersWithRoles.ToPagedList(pageNumber, pageSize));
+            
         }
 
         [Authorize(Roles = "SuperAdmin,Admin")]

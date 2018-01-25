@@ -1,6 +1,7 @@
-﻿@model IEnumerable<Rentalis_v2.Models.CarModels>
+﻿@model PagedList.IPagedList<Rentalis_v2.Models.CarModels>
+@using PagedList.Mvc;
 @{
-    ViewBag.Title = "CarsList";
+    ViewBag.Title = "Lista Samochodów";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 
@@ -18,11 +19,13 @@
 <table id="tableCars" class="table table-advance table-hover">
     <tbody>
         <tr>
-            <th><div class="row">
-                <div class="col-md-12 well">
-                    <a href="~/Admin/AddCar" class="btn btn-primary" style="color: white;"><i class="fa fa-fw -square -circle fa-plus-square"></i> Dodaj samochód</a>
+            <th>
+                <div class="row">
+                    <div class="col-md-12 well">
+                        <a href="~/Admin/AddCar" class="btn btn-primary" style="color: white;"><i class="fa fa-fw -square -circle fa-plus-square"></i> Dodaj samochód</a>
+                    </div>
                 </div>
-            </div></th>
+            </th>
             <th></th>
             <th></th>
             <th></th>
@@ -30,60 +33,64 @@
             <th><input type="text" id="searchInput" onkeyup="funkcja()" placeholder="Wyszukaj..." /></th>
         </tr>
         <script>
-        function funkcja() {
-            // Declare variables
-            var input, filter, table, tr, td, i;
-            input = document.getElementById("searchInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("tableCars");
-            tr = table.getElementsByTagName("tr");
+            function funkcja() {
+                // Declare variables
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("searchInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("tableCars");
+                tr = table.getElementsByTagName("tr");
 
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[1];
-                if (td) {
-                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
                     }
                 }
             }
-        }
         </script>
-    <tr>
-        <th>Zdjęcie</th>
-        <th> Nazwa</th>
-        <th> Rok produkcji</th>
-        <th>Opis</th>
-        <th>Nr. rejestracyjny</th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
         <tr>
-            <td>
-                <img src="~/Admin/RetrieveImage/@item.Id" alt="" height=100 width=200/>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductionYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShortDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlateNumber)
-            </td>
-            <td class="btn-group">
-                @Html.ActionLink("Edytuj", "EditCar", new {id = item.Id}, new {@class = "btn btn-success"})
-                @Html.ActionLink("Szczegóły", "CarDetails", new {id = item.Id}, new {@class = "btn btn-primary"})
-                @Html.ActionLink("Usuń", "DeleteCar", new {id = item.Id}, new {@class = "btn btn-danger"})
-            </td>
+            <th>Zdjęcie</th>
+            <th> Nazwa</th>
+            <th> Rok produkcji</th>
+            <th>Opis</th>
+            <th>Nr. rejestracyjny</th>
+            <th></th>
         </tr>
-        @Html.HiddenFor(id => item.Id)
-    }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Admin/RetrieveImage/@item.Id" alt="" height=100 width=200 />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductionYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlateNumber)
+                </td>
+                <td class="btn-group">
+                    @Html.ActionLink("Edytuj", "EditCar", new { id = item.Id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Szczegóły", "CarDetails", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Usuń", "DeleteCar", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+            @Html.HiddenFor(id => item.Id)
+        }
     </tbody>
 </table>
+Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Cars",
+          new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

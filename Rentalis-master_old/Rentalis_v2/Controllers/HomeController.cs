@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using Rentalis_v2.Models;
 using MySql.Data.MySqlClient;
+using PagedList;
 
 namespace Rentalis_v2.Controllers
 {
@@ -63,11 +64,16 @@ namespace Rentalis_v2.Controllers
             return View("List",result);
         }
 
-        public ActionResult Cars()
+        public ActionResult Cars(int? page)
         {
-            var result = _context.carModels.ToList();
-
-            return View(result);
+            
+            var result = from p in _context.carModels
+                           select p;
+            
+            result = result.OrderBy(p => p.Name);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(result.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult About()
