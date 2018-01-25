@@ -1,96 +1,102 @@
 ﻿@model Rentalis_v2.Models.CarModels
 @{
     ViewBag.Title = "CarDetails";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 
-<h2>CarDetails</h2>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Admin">Admin</a>
+    </li>
+    <li class="breadcrumb-item active">Szczegóły użytkownika</li>
+</ol>
+<div class="jumbotron">
+    <dl class="row">
 
-<dl class="dl-horizontal">
-    
-    <dt>
-        Zdjęcie
-    </dt>
+        <dt class="col-sm-2">
+            Zdjęcie
+        </dt>
 
-    <dd>
-        <img src="/Admin/RetrieveImage/@Model.Id" alt="" height=100 width=200 />
-    </dd>
+        <dd class="col-sm-10">
+            <img src="/Admin/RetrieveImage/@Model.Id" alt="" height=100 width=200 />
+        </dd>
 
-    <dt>
-        Nazwa
-    </dt>
+        <dt class="col-sm-2">
+            Nazwa
+        </dt>
 
-    <dd>
-        <b>@Html.DisplayFor(model => model.Name)</b>
-    </dd>
-    
-    <dt>
-        Cena za 24h
-    </dt>
-    <dd>
-        <b>@Html.DisplayFor(model => model.PricePerDay)</b>
-    </dd>
-    
-    <dt>
-        Rok produkcji
-    </dt>
+        <dd class="col-sm-10">
+            <b>@Html.DisplayFor(model => model.Name)</b>
+        </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.ProductionYear)
-    </dd>
-    
-    <dt>
-        Numer rejestracyjny
-    </dt>
+        <dt class="col-sm-2">
+            Cena za 24h
+        </dt>
+        <dd class="col-sm-10">
+            <b>@Html.DisplayFor(model => model.PricePerDay)</b>
+        </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.PlateNumber)
-    </dd>
+        <dt class="col-sm-2">
+            Rok produkcji
+        </dt>
 
-    <dt>
-        Opis
-    </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductionYear)
+        </dd>
 
-    <dd>
-        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Description))
-    </dd>
-    
-    <dt>Abs</dt>
-    <dd>@Html.DisplayFor(model => model.Abs)</dd>
+        <dt class="col-sm-2">
+            Numer rejestracyjny
+        </dt>
 
-    <dt>PowerSteering</dt>
-    <dd>@Html.DisplayFor(model => model.PowerSteering)</dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PlateNumber)
+        </dd>
 
-    <dt>AirConditioning</dt>
-    <dd>@Html.DisplayFor(model => model.AirConditioning)</dd>
+        <dt class="col-sm-2">
+            Opis
+        </dt>
 
-    <dt>CentralLocking</dt>
-    <dd>@Html.DisplayFor(model => model.CentralLocking)</dd>
+        <dd class="col-sm-10">
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Description))
+        </dd>
 
-    <dt>AirBags</dt>
-    <dd>@Html.DisplayFor(model => model.AirBags)</dd>
-    
-    <dt>Doors</dt>
-    <dd>@Html.DisplayFor(model => model.Doors)</dd>
-    <dt>Seets</dt>
-    <dd>@Html.DisplayFor(model => model.Seets)</dd>
-    <dt>FuelType</dt>
-    <dd>
-        @if (Model.FuelType == 0)
-        {
-            <p>Benzyna</p>
-        }
-        else if (Model.FuelType == 1)
-        {
-            <p>Diesel</p>
-        }
-        else if (Model.FuelType == 2)
-        {
-            <p>Benzyna + LPG </p>
-        }
-    </dd>
-    <dt>Type</dt>
-    <dd>@if (Model.Type == 0)
+        <dt class="col-sm-2">Abs</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Abs)</dd>
+
+        <dt class="col-sm-2">PowerSteering</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.PowerSteering)</dd>
+
+        <dt class="col-sm-2">AirConditioning</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.AirConditioning)</dd>
+
+        <dt class="col-sm-2">CentralLocking</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.CentralLocking)</dd>
+
+        <dt class="col-sm-2">AirBags</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.AirBags)</dd>
+
+        <dt class="col-sm-2">Doors</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Doors)</dd>
+        <dt class="col-sm-2">Seets</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(model => model.Seets)</dd>
+        <dt class="col-sm-2">FuelType</dt>
+        <dd class="col-sm-10">
+            @if (Model.FuelType == 0)
+            {
+                <p>Benzyna</p>
+            }
+            else if (Model.FuelType == 1)
+            {
+                <p>Diesel</p>
+            }
+            else if (Model.FuelType == 2)
+            {
+                <p>Benzyna + LPG </p>
+            }
+        </dd>
+        <dt class="col-sm-2">Type</dt>
+        <dd class="col-sm-10">
+            @if (Model.Type == 0)
         {
             <p>Sedan</p>
         }
@@ -119,23 +125,26 @@
             <p>Limuzyna </p>
         }
     </dd>
-    <dt>GearBox</dt>
-    <dd>@if (Model.GearBox == 0)
-        {
-            <p>Manualna</p>
-        }
-        else if (Model.GearBox == 1)
-        {
-            <p>Automatyczna</p>
-        }</dd>
+    <dt class="col-sm-2">GearBox</dt>
+    <dd class="col-sm-10">
+        @if (Model.GearBox == 0)
+    {
+        <p>Manualna</p>
+    }
+    else if (Model.GearBox == 1)
+    {
+        <p>Automatyczna</p>
+    }
+</dd>
 
-    
-    
 
-    <div class="form-group">
-        <div class="col-md-offset-1 col-md-11">
-            @*@Html.ActionLink("Edytuj", "EditCar", new { id = Model.Id }, new { @class = "btn btn-success" })*@
-            @Html.ActionLink("Wróć do listy ogłoszeń", "Cars", null, new { @class = "btn btn-primary" })
-        </div>
+
+
+<div class="form-group">
+    <div class="col-md-offset-1 col-md-11">
+        @*@Html.ActionLink("Edytuj", "EditCar", new { id = Model.Id }, new { @class = "btn btn-success" })*@
+        @Html.ActionLink("Wróć do listy samochodów", "Cars", null, new { @class = "btn btn-dark" })
     </div>
+</div>
 </dl>
+</div>
