@@ -1,0 +1,32 @@
+﻿@model Rentalis_v2.Models.CarService
+
+@{
+    ViewBag.Title = "ServiceDetails";
+    Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12 ">
+        
+        <h3></h3>
+        <h3>Naprawiany był samochód: <small>@Html.DisplayFor(model => model.serviceName)</small> </h3>
+        <hr />
+        <h3>Naprawiany był samochód: <small>@Html.DisplayFor(model => model.CarModel.Name)</small> </h3>
+        <hr />
+        <h3>Tablice Rejestracyjne: <small>@Html.DisplayFor(model => model.CarModel.PlateNumber)</small></h3>
+        <hr />
+        <h3>Cena: <small>@Html.DisplayFor(model => model.Price)</small></h3>
+        <hr />
+        <h3>Naprawa trwała od <small>@String.Format("{0:d MMMM yyyy}", Model.FromDateTime)</small> do <small>@String.Format("{0:d MMMM yyyy}", Model.ToDateTime)</small></h3>
+        <hr />
+        <h3>
+            Opis
+        </h3>        
+        <p class="well">@Html.DisplayFor(model => model.Description)</p>
+        <hr>
+        <hr />
+        <p>
+            @Html.ActionLink("Powrót do listy", "Index", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+        </p>
+    </div>
+</div>

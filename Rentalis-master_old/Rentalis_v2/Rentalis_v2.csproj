@@ -1162,7 +1162,7 @@
     <Content Include="Views\Service\DeleteService.cshtml" />
     <Content Include="Views\Service\Edit.cshtml" />
     <Content Include="Views\Service\index.cshtml" />
-    <Content Include="Views\Service\ServiceDetails.cshtml" />
+    <Content Include="Views\Service\Details.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
