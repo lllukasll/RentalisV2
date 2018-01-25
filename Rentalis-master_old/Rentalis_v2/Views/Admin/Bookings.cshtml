@@ -45,11 +45,11 @@
         }
     </script>
     <tr>
-        <th>CarId</th>
-        <th>UserId</th>
-        <th>DateFrom</th>
-        <th>DateTo</th>
-        <th>TotalPrice</th>
+        <th>Id Samochodu</th>
+        <th>Id Użytkownika</th>
+        <th>Data Od</th>
+        <th>Data Do</th>
+        <th>Cena</th>
         <th>Status</th>
         <th></th>
     </tr>
@@ -57,10 +57,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.carId)
+                <a href="~/Admin/CarDetails/@item.carId">@Html.DisplayFor(modelItem => item.carId)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.userId)
+                <a href="~/Admin/UserDetails?userId=@item.userId">@Html.DisplayFor(modelItem => item.userId)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateTimeFrom)
