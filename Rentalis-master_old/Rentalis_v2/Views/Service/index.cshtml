@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Rentalis_v2.Models.CarService>
+﻿@model PagedList.IPagedList<Rentalis_v2.Models.CarService>
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
@@ -6,24 +8,24 @@
 <div class="row" style="margin-left:20px; margin-right:20px;">
     <div class="col-md-12">
         <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" } )
         </p>
 
         <table class="table">
             <tr>
                 <th>#</th>
                 <th>
-                    Nazwa Samochodu
+                    @Html.ActionLink("Nazwa Samochodu", "Index", new { sortOrder = ViewBag.NameSortParm, @style = "text-decoration:none;" })
                 </th>
                 <th>
                     Nazwa Serwisu
                 </th>
-                <th>
+                <th >
                     Opis Naprawy
                 </th>
 
                 <th>
-                    Data oddania Auta do naprawy
+                    @Html.ActionLink("Data oddania Auta do naprawy", "Index", new { sortOrder = ViewBag.DateSortParm })
                 </th>
 
 
@@ -36,20 +38,20 @@
                 <th></th>
 
                 @*<th>
-            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CarModel.Name)
-        </th>
-        <th>
-            @Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSortParm })
-        <th>*@
+                    @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CarModel.Name)
+                </th>
+                <th>
+                    @Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+                <th>*@
 
                 <th></th>
             </tr>
 
             @foreach (var item in Model)
-             {
+        {
             <tr>
                 <td></td>
                 <td>
@@ -76,12 +78,17 @@
                     @Html.ActionLink("Edytuj", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
                 </td>
                 <td>
-                @Html.ActionLink("Wyświetl", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Wyświetl", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
                     @* @Html.ActionLink("Delete", "Delete", new { id = item.PostID }, new { @class = "btn btn-danger" })*@
                 </td>
             </tr>
-                }
+    }
 
         </table>
+        <br />
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     </div>
 </div>

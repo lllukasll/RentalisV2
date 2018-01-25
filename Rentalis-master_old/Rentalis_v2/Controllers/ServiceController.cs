@@ -1,4 +1,5 @@
-﻿using Rentalis_v2.Models;
+﻿using PagedList;
+using Rentalis_v2.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,46 +19,54 @@ namespace Rentalis_v2.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        public ActionResult Index(/*string sortOrder, string currentFilter, int? page*/)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
 
-            //ViewBag.CurrentSort = sortOrder;
-            //ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
-            //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
-            //var services = from p in _context.carServices
-            //               select p;
-            //services.Include(e => e.CarModel);
-            //services = services.OrderBy(p => p.CarModel.Name);
-            var services = _context.carServices
-                .Include(a => a.CarModel);
-            //switch (sortOrder)
-            //{
-            //    case "title_desc":
-            //        services = services.OrderByDescending(p => p.serviceName);
-            //        break;
-            //    case "Date":
-            //        services = services.OrderBy(p => p.CarModel.Name);
-            //        break;
-            //    case "date_desc":
-            //        services= services.OrderByDescending(p => p.CarModel.Name);
-            //        break;
-            //    default:
-            //        services = services.OrderBy(p => p.serviceName);
-            //        break;
+            var services = from p in _context.carServices
+                           select p;
+            services.Include(e => e.CarModel);
+            services = services.OrderBy(p => p.CarModel.Name);
 
-            //}
-            //int pageSize = 5;
-            //int pageNumber = (page ?? 1);
-            //return View(services.ToPagedList(pageNumber, pageSize));
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    services = services.OrderByDescending(p => p.serviceName);
+                    break;
+                case "Date":
+                    services = services.OrderBy(p => p.CarModel.Name);
+                    break;
+                case "date_desc":
+                    services = services.OrderByDescending(p => p.FromDateTime);
+                    break;
+                default:
+                    services = services.OrderBy(p => p.FromDateTime);
+                    break;
 
-            return View(services);
+            }
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(services.ToPagedList(pageNumber, pageSize));
 
-          
+            //return View(services);
+
+
         }
 
-        // GET: Service/Details/5
-        public ActionResult Details(int ?id)
+            // GET: Service/Details/5
+            public ActionResult Details(int ?id)
         {
 
             if (id == null)
