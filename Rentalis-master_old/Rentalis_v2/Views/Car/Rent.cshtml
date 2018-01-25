@@ -14,7 +14,7 @@
             <h3>Data wypożyczenia od : @Model.dateFrom do : @Model.dateTo <a href="/Car/Details/@Model.car.Id">Zmień datę</a></h3>
             <h3>Dni wypożyczenia : @Model.days</h3>
             <h3>Cena całkowita : @Model.TotalPrice</h3>
-            <h3>UserId : @User.Identity.GetUserId()</h3>
+            @*<h3>UserId : @User.Identity.GetUserId()</h3>*@
             @*@Html.DropDownListFor(o => o.ChoosenPaymentMethod, new SelectList(@Model.PaymentMethod, "Value", "Text"))*@
             @*@Html.ActionLink("Wypożycz", "ConfirmRent", "Car", new {id = @Model.car.Id, DateFrom = @Model.dateFrom, DateTo = @Model.dateTo, TotalPrice = @Model.TotalPrice, userId = @User.Identity.GetUserId(), paymentMethod = @Model.ChoosenPaymentMethod}, new {@class = "btn btn-success"})*@
             

@@ -62,7 +62,7 @@ namespace Rentalis_v2.Controllers
             carDetailsVievModel.DateToDT = dateTo;
             
 
-            string query = String.Format(@"SELECT * FROM rentalisv2.bookingmodels B WHERE carId = {0} AND ({1} >= DateTimeFrom AND {1} <=DateTimeTo) OR ({2} >= DateTimeFrom AND {2} <= DateTimeTo) ;",id.ToString(), dF, dT);
+            string query = String.Format(@"SELECT * FROM bookingmodels B WHERE carId = {0} AND ({1} >= DateTimeFrom AND {1} <=DateTimeTo) OR ({2} >= DateTimeFrom AND {2} <= DateTimeTo) ;",id.ToString(), dF, dT);
 
             MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
             try
@@ -137,7 +137,7 @@ namespace Rentalis_v2.Controllers
 
             if (rentModel.ChoosenPaymentMethod == 1)
             {
-                string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},5,1,{0})", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
+                string query = String.Format(@"INSERT INTO bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},5,1,{0})", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
                 //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
                 MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
                 try
@@ -158,7 +158,7 @@ namespace Rentalis_v2.Controllers
             }
             else if (rentModel.ChoosenPaymentMethod == 2)
             {
-                string query = String.Format(@"INSERT INTO rentalisv2.bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},1,2,{0})", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
+                string query = String.Format(@"INSERT INTO bookingmodels VALUES (null,'{0}','{1}','{2}',{3},{4},1,2,{0})", rentModel.car.Id, rentModel.userId, dF, dT, rentModel.TotalPrice);
                 //INSERT INTO rentalisv2.bookingmodels VALUES (null,'20171010080000','20171020080000',300,'asdasdas-eeq123-dxczcc.ad',2);
                 MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
                 try

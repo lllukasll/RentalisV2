@@ -36,7 +36,7 @@ namespace Rentalis_v2.Controllers
             string dF = dateFrom.ToString("yyyyMMddhhmmss");
 
             List<int> carIds = new List<int>();
-            string query = String.Format(@"SELECT * FROM rentalisv2.carmodels C LEFT JOIN rentalisv2.bookingmodels B ON C.Id = B.carId WHERE B.carId IS null OR NOT ('{0}' >= dateTimeFrom && '{0}' <= dateTimeTo) AND NOT ('{1}' >= dateTimeFrom && '{1}' <= dateTimeTo);",dF,dT);
+            string query = String.Format(@"SELECT * FROM carmodels C LEFT JOIN rentalisv2.bookingmodels B ON C.Id = B.carId WHERE B.carId IS null OR NOT ('{0}' >= dateTimeFrom && '{0}' <= dateTimeTo) AND NOT ('{1}' >= dateTimeFrom && '{1}' <= dateTimeTo);",dF,dT);
 
             MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
             try
