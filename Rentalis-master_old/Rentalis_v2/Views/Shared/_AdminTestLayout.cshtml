@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="utf-8">
@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <title>Panel Administracyjny &mdash; @ViewBag.Title</title>
     <!-- Bootstrap core CSS-->
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Custom fonts for this template-->
     <link href="~/Content/startbootstrap-sb-admin-gh-pages/startbootstrap-sb-admin-gh-pages/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -30,7 +31,7 @@
                 </a>
             </li>
         </ul>
-        <a class="navbar-brand" href="index.html">Rentalis - Panel Administracyjny</a>
+        <a class="navbar-brand" href="~/Admin/Index">Rentalis - Panel Administracyjny</a>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -48,19 +49,15 @@
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#exampleAccordion">
                         <i class="fa fa-user-o" aria-hidden="true"></i>
-                        <span class="nav-link-text">Klienci</span>
+                        <span class="nav-link-text">Użytkownicy</span>
                     </a>
                     <ul class="sidenav-second-level collapse" id="collapseUsers">
                         <li>
-                            <a href="~/Admin/AddUser">Dodaj Klienta</a>
+                            <a href="~/Admin/AddUser"><i class="fa fa-plus" aria-hidden="true"></i> Dodaj Użytkownika</a>
                         </li>
                         <li>
-                            <a href="~/Admin/Users">Klienci</a>
+                            <a href="~/Admin/Users"><i class="fa fa-list" aria-hidden="true"></i> Lista Użytkowników</a>
                         </li>
-                        <li>
-                            <a href="register.html">Pracownicy</a>
-                        </li>
-
                     </ul>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">

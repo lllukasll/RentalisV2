@@ -1,85 +1,79 @@
-﻿@model IEnumerable<Rentalis_v2.Models.UsersViewModel>
+﻿@model PagedList.IPagedList<Rentalis_v2.Models.UsersViewModel>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 }
 
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active">My Dashboard</li>
-                </ol>
-            </div>
+        <div class="section">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="~/Admin">Admin</a>
+                </li>
+                <li class="breadcrumb-item active">Użytkownicy</li>
+            </ol>
         </div>
-        <div class="row">
-            <div class="col-md-12 well">
-                <a class="btn btn-primary" style="color: white;" data-toggle="modal" data-target="#usuario"><i class="fa fa-fw -square -circle fa-plus-square"></i> Dodaj użytkownika</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <table id="tableAnnounce" class="table table-hover table-striped " >
-                    <tbody>
-                    @*<tr>
-                        <td>
-                            <a href="#"><i class="-alt fa fa-2x fa-eye fa-fw"></i></a>
-                        </td>
-                        <td>
-                            <h4>
-                                <b>Asistente de sistemas</b>
-                            </h4>
-                            <p>asddas</p>
-                        </td>
-                        <td>
-                            <img src="http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png" class="img-circle" width="60">
-                        </td>
-                        <td>
-                            <h4>
-                                <b>Ramón Villa Awad</b>
-                            </h4>
-                            <a href="mailto:ramonvillaw@gmail.com">ramonvillaw@gmail.com</a>
-                        </td>
-                        <td>2 años</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-default" value="left" type="button">
-                                    <i class="fa fa-fw s fa-remove"></i>Eliminar</button>
-                                <button class="btn btn-default" value="right" type="button">
-                                    <i class="fa fa-fw fa-cog"></i>Configurar</button>
+
+
+        <table id="tableCars" class="table table-hover table-striped ">
+            <tbody>
+                <tr>
+                    <th>
+                        <div class="row">
+                            <div class="col-md-12 well">
+                                <a href="~/Admin/AddUser" class="btn btn-primary" style="color: white;"><i class="fa fa-fw -square -circle fa-plus-square"></i> Dodaj użytkownika</a>
                             </div>
-                        </td>
-                    </tr>*@
-                    <tr>
-                        <th>Id</th>
-                        <th>Login</th>
-                        <th>Email</th>
-                        <th>Rola</th>
-                        <th></th>
-                    </tr>
-                    @foreach (var user in Model)
-                    {
-                        <tr>
-                            <td>@user.UserId</td>
-                            <td>@user.Username</td>
-                            <td>@user.Email</td>
-                            <td>@user.Role</td>
-                            <td>@Html.ActionLink("Szczegóły", "UserDetails", "Admin", new {userId = @user.UserId}, new {@class = "btn btn-primary"})</td>
-                        </tr>
+                        </div>
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th><input class="form-control" type="text" id="searchInput" onkeyup="funkcja2()" placeholder="Wyszukaj..." /></th>
+                </tr>
+                <script>
+                    function funkcja2() {
+                        // Declare variables
+                        var input, filter, table, tr, td, i;
+                        input = document.getElementById("searchInput");
+                        filter = input.value.toUpperCase();
+                        table = document.getElementById("tableCars");
+                        tr = table.getElementsByTagName("tr");
+
+                        // Loop through all table rows, and hide those who don't match the search query
+                        for (i = 0; i < tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td")[0];
+                            if (td) {
+                                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                    tr[i].style.display = "";
+                                } else {
+                                    tr[i].style.display = "none";
+                                }
+                            }
+                        }
                     }
+                </script>
+                <tr>
+                    <th>Id</th>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>Rola</th>
+                    <th></th>
+                </tr>
+                @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserId</td>
+                    <td>@user.Username</td>
+                    <td>@user.Email</td>
+                    <td>@user.Role</td>
+                    <td>@Html.ActionLink("Szczegóły", "UserDetails", "Admin", new { userId = @user.UserId }, new { @class = "btn btn-primary" })</td>
+                </tr>
+        }
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+            </tbody>
+        </table>
+        <br />
+        Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
 
+        @Html.PagedListPager(Model, page => Url.Action("Users",
+             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

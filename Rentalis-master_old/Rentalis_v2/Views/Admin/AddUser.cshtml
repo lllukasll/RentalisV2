@@ -4,73 +4,55 @@
     Layout = "~/Views/Shared/_AdminTestLayout.cshtml";
 
 }
-<div class="top-margin gtco-container">
-    <h2>@ViewBag.Title.</h2>
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        <h4>Utwórz nowe konto.</h4>
-        <hr />
-        @Html.ValidationSummary("", new { @class = "text-danger" })
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="~/Admin">Admin</a>
+    </li>
+    <li class="breadcrumb-item">Użytkownicy</li>
+    <li class="breadcrumb-item active">Dodaj nowego</li>
+</ol>
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h3 class="text-center">Dodaj konto użytkownika</h3>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
 
+                <div class="row">
+                    <dt class="col-md-3">@Html.LabelFor(m => m.Name, "Imie") </dt>
+                    <dd class="col-md-9">@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })</dd>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Name, "Imie", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-            </div>
+                    <dt class="col-md-3">@Html.LabelFor(m => m.Surname, "Nazwisko") </dt>
+                    <dd class="col-md-9">@Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })</dd>
+                    
+                    <dt class="col-md-3">@Html.LabelFor(m => m.Age, "Wiek") </dt>
+                    <dd class="col-md-9">@Html.TextBoxFor(m => m.Age, new { @class = "form-control" })</dd>
+                    
+                    <dt class="col-md-3">@Html.LabelFor(m => m.CarLicenceNumber, "Nr Prawo jazdy") </dt>
+                    <dd class="col-md-9">@Html.TextBoxFor(m => m.CarLicenceNumber, new { @class = "form-control" })</dd>
+                    
+                    <dt class="col-md-3">@Html.LabelFor(m => m.Adress, "Adres Zamieszkania") </dt>
+                    <dd class="col-md-9">@Html.TextBoxFor(m => m.Adress, new { @class = "form-control" })</dd>
+                    
+                    <dt class="col-md-3">@Html.LabelFor(m => m.Email, "Adres Email") </dt>
+                    <dd class="col-md-9">@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })</dd>
+                    
+                    <dt class="col-md-3">@Html.LabelFor(m => m.Password, "Hasło")</dt>
+                    <dd class="col-md-9">@Html.PasswordFor(m => m.Password, new { @class = "form-control" })</dd>
+                    
+                    <dt class="col-md-3">@Html.LabelFor(m => m.ConfirmPassword, "Potwierdz Hasło") </dt>
+                    <dd class="col-md-9">@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })</dd>
+                </div>
+                
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-dark form-control" value="Dodaj" />
+                    </div>
+                
+            }
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Surname, "Nazwisko", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Age, "Wiek", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Age, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.CarLicenceNumber, "Nr Prawo jazdy", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.CarLicenceNumber, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Adress, "Adres Zamieszkania", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Adress, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Email, "Adres Email", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password, "Hasło", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, "Potwierdz Hasło", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Zarejestruj" />
-            </div>
-        </div>
-    }
+    </div>
 </div>
+    

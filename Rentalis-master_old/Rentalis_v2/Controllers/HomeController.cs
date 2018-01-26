@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Rentalis_v2.Models;
 using MySql.Data.MySqlClient;
+using PagedList;
+using System.IO;
 
 namespace Rentalis_v2.Controllers
 {
@@ -18,7 +21,34 @@ namespace Rentalis_v2.Controllers
         {
             _context = new ApplicationDbContext();
         }
-
+        public byte[] GetBytesFromFile(string fullFilePath)
+        {
+            // this method is limited to 2^32 byte files (4.2 GB)
+            FileStream fs = null;
+            try
+            {
+                fs = System.IO.File.OpenRead(fullFilePath);
+                byte[] bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, Convert.ToInt32(fs.Length));
+                return bytes;
+            }
+            finally
+            {
+                if (fs != null)
+                {
+                    fs.Close();
+                    fs.Dispose();
+                }
+            }
+        }
+        public FileContentResult Help()
+        {
+          
+            string filepath = Server.MapPath("~/Content/pdf/help.pdf");
+            byte[] pdfByte = GetBytesFromFile(filepath);
+            return File(pdfByte, "application/pdf");
+            
+        }
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
@@ -36,7 +66,7 @@ namespace Rentalis_v2.Controllers
             string dF = dateFrom.ToString("yyyyMMddhhmmss");
 
             List<int> carIds = new List<int>();
-            string query = String.Format(@"SELECT * FROM rentalisv2.carmodels C LEFT JOIN rentalisv2.bookingmodels B ON C.Id = B.carId WHERE B.carId IS null OR NOT ('{0}' >= dateTimeFrom && '{0}' <= dateTimeTo) AND NOT ('{1}' >= dateTimeFrom && '{1}' <= dateTimeTo);",dF,dT);
+            string query = String.Format(@"SELECT * FROM carmodels C LEFT JOIN rentalisv2.bookingmodels B ON C.Id = B.carId WHERE B.carId IS null OR NOT ('{0}' >= dateTimeFrom && '{0}' <= dateTimeTo) AND NOT ('{1}' >= dateTimeFrom && '{1}' <= dateTimeTo);",dF,dT);
 
             MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
             try
@@ -63,11 +93,16 @@ namespace Rentalis_v2.Controllers
             return View("List",result);
         }
 
-        public ActionResult Cars()
+        public ActionResult Cars(int? page)
         {
-            var result = _context.carModels.ToList();
-
-            return View(result);
+            
+            var result = from p in _context.carModels
+                           select p;
+            
+            result = result.OrderBy(p => p.Name);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(result.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult About()

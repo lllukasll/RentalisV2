@@ -351,7 +351,7 @@ namespace Rentalis_v2.Controllers
         public ActionResult Bookings()
         {
             List<int> bookingIds = new List<int>();
-            string query = String.Format(@"SELECT * FROM rentalisv2.bookingmodels WHERE userId LIKE '{0}';", @User.Identity.GetUserId());
+            string query = String.Format(@"SELECT * FROM bookingmodels WHERE userId LIKE '{0}';", @User.Identity.GetUserId());
 
             MySqlConnection conn = new MySqlConnection("SERVER=localhost;DATABASE=rentalisv2;UID=root;PASSWORD=;");
             try
